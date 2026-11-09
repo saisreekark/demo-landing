@@ -10,7 +10,7 @@ REGION="${REGION:-us-central1}"
 REPO_NAME="${REPO_NAME:-demo-landing-repo}"
 REPO="${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}"
 
-SERVICE="${SERVICE:-demo-landing-classic}"
+SERVICE="${SERVICE:-demo-landing}"
 IMAGE="${REPO}/${SERVICE}:latest"
 
 # Runtime service account on gtm-cloud-helpdesk

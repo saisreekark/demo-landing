@@ -1,7 +1,5 @@
 import React from 'react';
 import { ModalId, PageRoute } from '../data/showcaseData';
-import { useSequentialReveal } from '../hooks/useSequentialReveal';
-import { PresentationControls } from './PresentationControls';
 
 interface FuturePillarSectionProps {
   onOpenModal: (id: ModalId) => void;
@@ -11,113 +9,134 @@ interface FuturePillarSectionProps {
 const PRIORITIES_2027 = [
   {
     id: 1,
+    code: 'PRIORITY 01',
     title: 'Strategic Growth:',
     description:
       'Maintaining a sharp focus on cross-market applicability, scalability, and strong go-to-market (GTM) potential.',
     icon: 'trending_up',
-    iconBgClass: 'bg-google-blue/10 text-google-blue',
-    dotClass: 'bg-google-blue',
+    badgeClass: 'bg-[#E8F0FE] text-[#1A73E8]',
+    borderClass: 'border-l-[#1A73E8]',
   },
   {
     id: 2,
+    code: 'PRIORITY 02',
     title: 'Cloud Support:',
     description:
       'Implementing end-to-end autonomous workflows to drive continuous efficiency and faster resolution times.',
     icon: 'support_agent',
-    iconBgClass: 'bg-google-green/10 text-google-green',
-    dotClass: 'bg-google-green',
+    badgeClass: 'bg-[#E6F4EA] text-[#188038]',
+    borderClass: 'border-l-[#188038]',
   },
   {
     id: 3,
+    code: 'PRIORITY 03',
     title: 'Hub Services:',
     description:
       'Migrating and upgrading our existing AI solutions to next-generation environments, utilizing specialized capabilities to elevate content quality and coverage.',
     icon: 'hub',
-    iconBgClass: 'bg-primary-container/50 text-primary',
-    dotClass: 'bg-primary',
+    badgeClass: 'bg-[#D3E3FD] text-[#0B57D0]',
+    borderClass: 'border-l-[#0B57D0]',
   },
   {
     id: 4,
+    code: 'PRIORITY 04',
     title: 'GTM Helpdesk:',
     description:
       'Accelerating case resolution and delivering immediate, tangible benefits through advanced agentic solutions.',
     icon: 'bolt',
-    iconBgClass: 'bg-[#FEF7E0] text-[#B06000]',
-    dotClass: 'bg-[#FBBC05]',
+    badgeClass: 'bg-[#FEF7E0] text-[#B06000]',
+    borderClass: 'border-l-[#B06000]',
   },
   {
     id: 5,
+    code: 'PRIORITY 05',
     title: 'Partner programs:',
     description:
       'Scaling AaaS Marketplace solution adoption and accelerating Corporate growth by prioritizing key AI ISVs and strategic segment alliances.',
     icon: 'handshake',
-    iconBgClass: 'bg-[#FCE8E6] text-[#D93025]',
-    dotClass: 'bg-[#EA4335]',
+    badgeClass: 'bg-[#FCE8E6] text-[#D93025]',
+    borderClass: 'border-l-[#D93025]',
   },
 ];
 
 export const FuturePillarSection: React.FC<FuturePillarSectionProps> = ({
+  onOpenModal,
   onNavigatePage,
 }) => {
-  const totalSteps = 5;
-  const { visibleStep, isComplete, replay, showAll, revealClass } = useSequentialReveal(
-    totalSteps,
-    1350
-  );
-
   return (
     <section
-      className="py-3 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto w-full"
+      className="w-full px-5 sm:px-8 lg:px-12 py-4"
       id="pillar-future"
     >
-      {/* Step 0: Section Header & Presentation Controls */}
-      <div
-        className={`flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-4 pb-2.5 border-b border-outline-variant/30 ${revealClass(
-          0
-        )}`}
-      >
+      {/* Editorial Section Masthead */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-3.5 mb-5 border-b-2 border-slate-900">
         <div>
-          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-bold tracking-tight">
+          <div className="flex items-center gap-2 mb-1.5 font-mono text-[11px] uppercase tracking-widest">
+            <span className="px-2 py-0.5 bg-[#E6F4EA] text-[#188038] font-bold rounded">
+              SECTION 04
+            </span>
+            <span className="text-slate-400">//</span>
+            <span className="text-slate-600 font-semibold">
+              STRATEGIC OUTLOOK &amp; AUTONOMOUS WORKFLOWS
+            </span>
+          </div>
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-900 font-bold tracking-tight">
             2027 Priority
           </h2>
-          <p className="font-body text-sm sm:text-base text-on-surface-variant font-medium max-w-3xl mt-0.5 leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-slate-600 max-w-3xl mt-0.5 leading-relaxed">
             2027 Priorities: Driving efficiency and amplifying customer experience
           </p>
         </div>
-        <PresentationControls
-          visibleStep={visibleStep}
-          totalSteps={totalSteps}
-          isComplete={isComplete}
-          onReplay={replay}
-          onShowAll={showAll}
-          onNavigatePage={onNavigatePage}
-          prevPillar={{ page: 'delivery', label: '03 Delivery Highlights' }}
-        />
+
+        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+          <button
+            type="button"
+            onClick={() => onOpenModal('modal-autonomous')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#E6F4EA] hover:bg-[#188038] text-[#188038] hover:text-white border border-[#188038]/30 font-mono text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            <span>2027 Autonomous POV</span>
+            <span className="material-symbols-outlined text-[15px]">open_in_new</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigatePage('landing')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-mono text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-[15px]">arrow_back</span>
+            <span>Back to Overview</span>
+          </button>
+        </div>
       </div>
 
-      {/* 5 Components Arranged Horizontally One Below the Other */}
-      <div className="flex flex-col gap-3">
-        {PRIORITIES_2027.map((item, idx) => (
-          <div
+      {/* 5 Strategic Priorities — Formal Numbered Newsletter Ledger */}
+      <div className="bg-white border border-slate-200 rounded divide-y divide-slate-200 shadow-[0_1px_3px_rgba(15,23,42,0.03)]">
+        {PRIORITIES_2027.map((item) => (
+          <article
             key={item.id}
-            className={`bg-white p-4 sm:p-5 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-all flex items-center gap-4 google-animated-border ${revealClass(
-              idx + 1
-            )}`}
+            className={`p-4 sm:p-5 border-l-4 ${item.borderClass} flex flex-col sm:flex-row sm:items-center gap-4 hover:bg-slate-50/70 transition-colors`}
           >
-            <div
-              className={`w-10 h-10 rounded-xl ${item.iconBgClass} flex items-center justify-center shrink-0 font-display font-bold text-sm shadow-sm`}
-            >
-              {item.id}
+            <div className="flex items-center gap-3.5 sm:w-64 shrink-0">
+              <div
+                className={`w-10 h-10 rounded ${item.badgeClass} flex items-center justify-center font-mono font-bold text-sm shrink-0`}
+              >
+                0{item.id}
+              </div>
+              <div>
+                <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block">
+                  {item.code}
+                </span>
+                <h3 className="font-serif text-base sm:text-lg font-bold text-slate-900">
+                  {item.title}
+                </h3>
+              </div>
             </div>
-            <div className="flex-1 min-w-0">
-              <h4 className="font-display text-base sm:text-lg font-bold text-on-surface">
-                {item.title}
-              </h4>
-              <p className="font-body text-xs sm:text-sm text-on-surface-variant mt-1 leading-relaxed">
+
+            <div className="flex-1 sm:border-l sm:border-slate-200 sm:pl-6">
+              <p className="font-sans text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {item.description}
               </p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

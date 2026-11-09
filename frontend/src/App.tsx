@@ -8,7 +8,6 @@ import { FuturePillarSection } from './components/FuturePillarSection';
 import { ModalsContainer } from './components/ModalsContainer';
 import { ViewportFitStage } from './components/ViewportFitStage';
 import { FeedbackWidget } from './components/FeedbackWidget';
-import { LandingBackgroundPattern } from './components/LandingBackgroundPattern';
 import { MobileShowcaseView } from './components/mobile/MobileShowcaseView';
 import { useDeviceType } from './hooks/useDeviceType';
 import {
@@ -135,15 +134,16 @@ export function App() {
   }
 
   return (
-    <div className="h-screen w-screen overflow-hidden flex flex-col justify-between relative bg-surface text-on-surface">
-      {/* Subtle Google-Color Animated Background Pattern & Flanking Ribbons */}
-      <LandingBackgroundPattern activePage={activePage} />
+    <div className="h-screen w-screen overflow-hidden flex flex-col justify-between relative bg-[#F8FAFC] text-slate-900">
+      {/* 1. Full-Width Sticky Executive Newsletter Header & Section Switcher */}
+      <Header
+        activePage={activePage}
+        onNavigatePage={navigateToPage}
+        onOpenModal={setActiveModal}
+      />
 
-      {/* 1. Sticky Executive Header & Brand Lockup (Never overlaps page content) */}
-      <Header activePage={activePage} onNavigatePage={navigateToPage} />
-
-      {/* Main Content Stage — Auto-fitted to remaining viewport without scroll or clipping */}
-      <main className="relative z-10 flex-1 overflow-hidden flex flex-col">
+      {/* 2. Full-Width Main Content Stage — Uses 100% of screen width & fits viewport height */}
+      <main className="relative z-10 flex-1 w-full overflow-hidden flex flex-col">
         <ViewportFitStage key={activePage}>
           {activePage === 'landing' && (
             <HeroConstellation
@@ -191,10 +191,10 @@ export function App() {
         </ViewportFitStage>
       </main>
 
-      {/* Floating Collect Feedback Button & Popover Form (Bottom-Right Corner) */}
+      {/* 3. Floating Collect Feedback Button & Popover Form (Bottom-Right Corner) */}
       <FeedbackWidget activePage={activePage} />
 
-      {/* Modals (M3 Light) */}
+      {/* 4. Interactive Modals */}
       <ModalsContainer
         activeModal={activeModal}
         onCloseModal={() => setActiveModal(null)}

@@ -87,41 +87,31 @@
   animation: flowGradientX 16s ease-in-out infinite;
 }
 
-/* Exact 4-quadrant rotating conic-gradient border from stitch_enterprise_ai_transformation_showcase (3).zip */
+/* Formal Executive Newsletter Card Border (replaces spinning conic border) */
 .google-animated-border {
   position: relative;
-  border-radius: 1rem;
-  background-clip: padding-box;
-  isolation: isolate;
-  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #FFFFFF;
+  border: 1px solid #DADCE0;
 }
 
-.google-animated-border::before {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
-  margin: auto;
-  z-index: -2;
-  background: conic-gradient(
-    from 0deg,
-    #4285F4 0deg 90deg,
-    #EA4335 90deg 180deg,
-    #FBBC04 180deg 270deg,
-    #34A853 270deg 360deg
-  );
-  animation: googleBorderRotate 24s linear infinite;
+.newsletter-double-rule {
+  border-top: 2px solid #111827;
+  border-bottom: 1px solid #9CA3AF;
+  height: 5px;
 }
 
-.google-animated-border::after {
-  content: '';
-  position: absolute;
-  inset: 2px;
-  border-radius: calc(1rem - 2px);
-  background: #FFFFFF;
-  z-index: -1;
-  pointer-events: none;
+.newsletter-section-rule {
+  border-top: 2px solid #1F2937;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: #FFFFFF !important;
+  }
 }
 
 /* Center Hub Revolving Conic Border — keeps absolute centering intact + exact v3 glow */

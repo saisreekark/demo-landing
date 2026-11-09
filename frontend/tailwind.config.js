@@ -31,9 +31,10 @@ export default {
       },
       fontFamily: {
         sans: ["Google Sans", "Google Sans Text", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        serif: ["Newsreader", "Georgia", "Cambria", "Times New Roman", "serif"],
         display: ["Google Sans", "Google Sans Text", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
         body: ["Google Sans", "Google Sans Text", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        mono: ["Google Sans", "Google Sans Text", "-apple-system", "BlinkMacSystemFont", "sans-serif"]
+        mono: ["JetBrains Mono", "Google Sans", "monospace"]
       }
     }
   },

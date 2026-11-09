@@ -1,7 +1,5 @@
 import React from 'react';
 import { ModalId, PageRoute, ViewMode } from '../data/showcaseData';
-import { useSequentialReveal } from '../hooks/useSequentialReveal';
-import { PresentationControls } from './PresentationControls';
 
 interface TransformationPillarSectionProps {
   viewMode: ViewMode;
@@ -9,314 +7,258 @@ interface TransformationPillarSectionProps {
   onNavigatePage: (page: PageRoute) => void;
 }
 
+const SUB_AGENTS = [
+  {
+    name: 'Digital SME',
+    role: 'Expert Agent',
+    icon: 'psychology',
+    accent: 'text-[#1A73E8] border-t-[#1A73E8]',
+  },
+  {
+    name: 'CORE',
+    role: 'Simulator',
+    icon: 'terminal',
+    accent: 'text-[#188038] border-t-[#188038]',
+  },
+  {
+    name: 'Crado',
+    role: 'Workflow',
+    icon: 'account_tree',
+    accent: 'text-[#B06000] border-t-[#B06000]',
+  },
+  {
+    name: 'Mayfly',
+    role: 'Diagnosis',
+    icon: 'rocket_launch',
+    accent: 'text-[#D93025] border-t-[#D93025]',
+  },
+  {
+    name: 'Elevate 360',
+    role: 'Performance',
+    icon: 'insights',
+    accent: 'text-[#0B57D0] border-t-[#0B57D0]',
+  },
+];
+
 export const TransformationPillarSection: React.FC<TransformationPillarSectionProps> = ({
   onOpenModal,
   onNavigatePage,
 }) => {
-  const totalSteps = 6;
-  const { visibleStep, isComplete, replay, showAll, revealClass } = useSequentialReveal(
-    totalSteps,
-    1350
-  );
-
   return (
     <section
-      className="py-3 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto w-full"
+      className="w-full px-5 sm:px-8 lg:px-12 py-4"
       id="pillar-transformation"
     >
-      {/* Step 0: Section Header Bar with Presentation Controls */}
-      <div
-        className={`flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-3.5 pb-2.5 border-b border-outline-variant/30 ${revealClass(
-          0
-        )}`}
-      >
+      {/* Editorial Section Masthead */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-3.5 mb-5 border-b-2 border-slate-900">
         <div>
-          <h2 className="font-display text-2xl sm:text-3xl text-on-surface font-bold tracking-tight">
+          <div className="flex items-center gap-2 mb-1.5 font-mono text-[11px] uppercase tracking-widest">
+            <span className="px-2 py-0.5 bg-[#E8F0FE] text-[#1A73E8] font-bold rounded">
+              SECTION 01
+            </span>
+            <span className="text-slate-400">//</span>
+            <span className="text-slate-600 font-semibold">
+              ARCHITECTURE MODERNIZATION &amp; GOVERNANCE
+            </span>
+          </div>
+          <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-slate-900 font-bold tracking-tight">
             Transformation Highlights
           </h2>
-          <p className="font-body text-xs sm:text-sm text-on-surface-variant max-w-2xl mt-0.5 leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-slate-600 max-w-2xl mt-0.5 leading-relaxed">
             Establishing a structured transformation engine to accelerate AI-led modern
             architectures.
           </p>
         </div>
-        <PresentationControls
-          visibleStep={visibleStep}
-          totalSteps={totalSteps}
-          isComplete={isComplete}
-          onReplay={replay}
-          onShowAll={showAll}
-          onNavigatePage={onNavigatePage}
-          nextPillar={{ page: 'partnership', label: '02 Partnership' }}
-        />
+
+        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+          <button
+            type="button"
+            onClick={() => onNavigatePage('landing')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded border border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-mono text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-[15px]">arrow_back</span>
+            <span>Back to Overview</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => onNavigatePage('partnership')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-[#0F2942] hover:bg-slate-800 text-white font-mono text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            <span>02. Partnership</span>
+            <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+          </button>
+        </div>
       </div>
 
-      {/* 2-Column Main Showcase Grid Matching Stitch v3 */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        {/* Left / Main Wide Column (~70% / 8 cols) */}
-        <div className="lg:col-span-8 flex flex-col justify-between gap-3">
-          {/* Step 1: Top Card — GOVERNANCE & CTO LEADERSHIP */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm google-animated-border ${revealClass(
-              1
-            )}`}
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+      {/* 2-Column Newspaper Grid: 8 Cols Main Articles + 4 Cols Financial & Impact Sidebar */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        {/* Left / Main Editorial Column (8 cols) */}
+        <div className="lg:col-span-8 lg:border-r lg:border-slate-300 lg:pr-8 flex flex-col justify-between gap-4">
+          {/* Article 1: GOVERNANCE & CTO LEADERSHIP */}
+          <article className="bg-white border border-slate-200 border-l-4 border-l-[#1A73E8] rounded-r p-5 shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-3 border-b border-slate-100">
               <div>
-                <span className="font-mono text-[10px] text-google-blue font-bold uppercase tracking-wider block">
+                <span className="font-mono text-[10px] text-[#1A73E8] font-bold uppercase tracking-widest block">
                   GOVERNANCE &amp; CTO LEADERSHIP
                 </span>
-                <h4 className="font-display text-base sm:text-lg text-on-surface font-bold">
+                <h3 className="font-serif text-lg sm:text-xl text-slate-900 font-bold mt-0.5">
                   Strengthening transformation governance
-                </h4>
+                </h3>
               </div>
               <button
                 type="button"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#E8F0FE] hover:bg-primary-container/60 text-google-blue font-mono text-[11px] font-semibold border border-primary/20 transition-colors shrink-0"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#E8F0FE] hover:bg-[#1A73E8] text-[#1A73E8] hover:text-white font-mono text-[11px] font-semibold border border-[#1A73E8]/30 transition-colors shrink-0 self-start sm:self-auto cursor-pointer"
                 onClick={() => onOpenModal('modal-prioritization-framework')}
               >
                 <span>Priortization Framework</span>
-                <span className="material-symbols-outlined text-[13px]">launch</span>
+                <span className="material-symbols-outlined text-[14px]">launch</span>
               </button>
             </div>
 
-            {/* Info Pills Stacked One Below Another */}
-            <div className="flex flex-col items-start gap-2 text-xs font-body">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
-                <span className="w-2 h-2 rounded-full bg-google-blue shrink-0"></span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-sans">
+              <div className="p-3 rounded bg-slate-50 border border-slate-200/80 flex items-start gap-2.5 text-slate-800">
+                <span className="w-2 h-2 rounded-full bg-[#1A73E8] shrink-0 mt-1.5" />
                 <span>
-                  <strong className="font-semibold">Leadership:</strong> Reinforced under Lakshmi
-                  Kumar Narayan (CTO Org)
+                  <strong className="font-semibold text-slate-900">Leadership:</strong> Reinforced
+                  under Lakshmi Kumar Narayan (CTO Org)
                 </span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
-                <span className="w-2 h-2 rounded-full bg-google-green shrink-0"></span>
+              <div className="p-3 rounded bg-slate-50 border border-slate-200/80 flex items-start gap-2.5 text-slate-800">
+                <span className="w-2 h-2 rounded-full bg-[#188038] shrink-0 mt-1.5" />
                 <span>
-                  <strong className="font-semibold">Framework:</strong> 5-Vector Prioritization
-                  Framework for AI Solutions
+                  <strong className="font-semibold text-slate-900">Framework:</strong> 5-Vector
+                  Prioritization Framework for AI Solutions
                 </span>
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Step 3: Row 2 Left — TRANSFORMATION TENET · CLOUD SCALE */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm google-animated-border ${revealClass(
-              3
-            )}`}
-          >
-            <div className="flex items-center gap-1.5 text-google-blue font-mono text-[11px] font-semibold uppercase tracking-wider mb-1">
-              <span className="material-symbols-outlined text-[16px]">layers</span>
-              <span>TRANSFORMATION TENET · CLOUD SCALE</span>
+          {/* Article 2: TRANSFORMATION TENET · CLOUD SCALE */}
+          <article className="bg-white border border-slate-200 border-l-4 border-l-[#0B57D0] rounded-r p-5 shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+            <div className="pb-2.5 mb-3 border-b border-slate-100">
+              <div className="flex items-center gap-1.5 text-[#0B57D0] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="material-symbols-outlined text-[15px]">layers</span>
+                <span>TRANSFORMATION TENET · CLOUD SCALE</span>
+              </div>
+              <h3 className="font-serif text-lg sm:text-xl text-slate-900 font-bold mt-0.5 leading-snug">
+                Piloted scaling of AI solutions across different Cloud programs
+              </h3>
             </div>
-            <h3 className="font-display text-base sm:text-lg text-on-surface font-bold tracking-tight leading-snug mb-3">
-              Piloted scaling of AI solutions across different Cloud programs
-            </h3>
 
-            {/* 2 Lines Below One Another in Similar Format to Leadership & Framework */}
-            <div className="flex flex-col items-start gap-2 text-xs font-body">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
-                <span className="w-2 h-2 rounded-full bg-google-blue shrink-0"></span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm font-sans">
+              <div className="p-3 rounded bg-slate-50 border border-slate-200/80 flex items-start gap-2.5 text-slate-800">
+                <span className="w-2 h-2 rounded-full bg-[#1A73E8] shrink-0 mt-1.5" />
                 <span>
-                  <strong className="font-semibold">CORE:</strong> ISV, GCP tech, GWS Tech, Billing
+                  <strong className="font-semibold text-slate-900">CORE:</strong> ISV, GCP tech, GWS
+                  Tech, Billing
                 </span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
-                <span className="w-2 h-2 rounded-full bg-google-green shrink-0"></span>
+              <div className="p-3 rounded bg-slate-50 border border-slate-200/80 flex items-start gap-2.5 text-slate-800">
+                <span className="w-2 h-2 rounded-full bg-[#188038] shrink-0 mt-1.5" />
                 <span>
-                  <strong className="font-semibold">Accelerate:</strong> ISV MP, GCP tech, GWS TEch,
-                  Billing
+                  <strong className="font-semibold text-slate-900">Accelerate:</strong> ISV MP, GCP
+                  tech, GWS TEch, Billing
                 </span>
               </div>
             </div>
-          </div>
+          </article>
 
-          {/* Step 5: Row 3 Left — Transitioning to E2E architecture anchored in Digital lead as unified orchestrator */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm google-animated-border ${revealClass(
-              5
-            )}`}
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-outline-variant/30 mb-2.5">
-              <div className="flex items-center gap-1.5">
-                <span className="material-symbols-outlined text-google-blue text-[16px]">hub</span>
-                <span className="font-display text-xs sm:text-sm text-google-blue font-bold tracking-tight">
-                  Transitioning to E2E architecture anchored in Digital lead as unified orchestrator
-                </span>
+          {/* Article 3: E2E ARCHITECTURE & DIGITAL LEAD ORCHESTRATOR */}
+          <article className="bg-white border border-slate-200 border-l-4 border-l-[#188038] rounded-r p-5 shadow-[0_1px_2px_rgba(15,23,42,0.03)]">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-3 border-b border-slate-100">
+              <div>
+                <div className="flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#188038]">
+                  <span className="material-symbols-outlined text-[15px]">hub</span>
+                  <span>
+                    Transitioning to E2E architecture anchored in Digital lead as unified
+                    orchestrator
+                  </span>
+                </div>
+                <h3 className="font-serif text-lg sm:text-xl text-slate-900 font-bold mt-0.5 leading-snug">
+                  Seamlessly connect all points solutions through Digital lead
+                </h3>
               </div>
+
               <button
                 type="button"
                 onClick={() => onOpenModal('modal-digital-lead')}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#E8F0FE] hover:bg-primary-container/60 text-google-blue font-mono text-[11px] font-semibold border border-primary/20 transition-colors shrink-0 cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#E8F0FE] hover:bg-[#1A73E8] text-[#1A73E8] hover:text-white font-mono text-[11px] font-semibold border border-[#1A73E8]/30 transition-colors shrink-0 self-start sm:self-auto cursor-pointer"
               >
                 <span>Digital Lead</span>
-                <span className="material-symbols-outlined text-[13px]">launch</span>
+                <span className="material-symbols-outlined text-[14px]">launch</span>
               </button>
             </div>
 
-            <h3 className="font-display text-base sm:text-lg text-on-surface font-bold tracking-tight leading-snug mb-3">
-              Seamlessly connect all points solutions through Digital lead
-            </h3>
-
-            {/* Sub-agents 5-card horizontal row */}
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center font-mono">
-              <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-blue hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center group cursor-pointer relative overflow-hidden">
-                <div className="absolute top-1.5 right-2 flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-google-blue animate-pulse"></span>
+            {/* Connected Sub-Agents 5-Column Editorial Ledger */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center">
+              {SUB_AGENTS.map((agent) => (
+                <div
+                  key={agent.name}
+                  onClick={() => onOpenModal('modal-digital-lead')}
+                  className={`p-3 rounded bg-slate-50 hover:bg-white border border-slate-200 border-t-2 ${agent.accent} flex flex-col items-center cursor-pointer hover:shadow-sm transition-all`}
+                >
+                  <span
+                    className={`material-symbols-outlined text-[18px] mb-1 ${
+                      agent.accent.split(' ')[0]
+                    }`}
+                  >
+                    {agent.icon}
+                  </span>
+                  <div className="font-display font-bold text-xs text-slate-900">{agent.name}</div>
+                  <div className="font-mono text-[10px] text-slate-500 mt-0.5">{agent.role}</div>
                 </div>
-                <div className="w-7 h-7 rounded-lg bg-google-blue/10 text-google-blue flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-google-blue group-hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[16px]">psychology</span>
-                </div>
-                <div className="font-display font-bold text-xs text-on-surface group-hover:text-google-blue transition-colors">
-                  Digital SME
-                </div>
-                <div className="text-[10px] text-on-surface-variant font-body">Expert Agent</div>
-              </div>
-
-              <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-green hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center group cursor-pointer relative overflow-hidden">
-                <div className="absolute top-1.5 right-2 flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-google-green animate-pulse"></span>
-                </div>
-                <div className="w-7 h-7 rounded-lg bg-google-green/10 text-google-green flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-google-green group-hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[16px]">terminal</span>
-                </div>
-                <div className="font-display font-bold text-xs text-on-surface group-hover:text-google-green transition-colors">
-                  CORE
-                </div>
-                <div className="text-[10px] text-on-surface-variant font-body">Simulator</div>
-              </div>
-
-              <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-tertiary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center group cursor-pointer relative overflow-hidden">
-                <div className="absolute top-1.5 right-2 flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FBBC05] animate-pulse"></span>
-                </div>
-                <div className="w-7 h-7 rounded-lg bg-[#FEF7E0] text-[#B06000] flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-[#B06000] group-hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[16px]">account_tree</span>
-                </div>
-                <div className="font-display font-bold text-xs text-on-surface group-hover:text-tertiary transition-colors">
-                  Crado
-                </div>
-                <div className="text-[10px] text-on-surface-variant font-body">Workflow</div>
-              </div>
-
-              <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-[#EA4335] hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex flex-col items-center group cursor-pointer relative overflow-hidden">
-                <div className="absolute top-1.5 right-2 flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#EA4335] animate-pulse"></span>
-                </div>
-                <div className="w-7 h-7 rounded-lg bg-[#FCE8E6] text-[#D93025] flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-[#EA4335] group-hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[16px]">rocket_launch</span>
-                </div>
-                <div className="font-display font-bold text-xs text-on-surface group-hover:text-[#D93025] transition-colors">
-                  Mayfly
-                </div>
-                <div className="text-[10px] text-on-surface-variant font-body">Diagnosis</div>
-              </div>
-
-              <div className="p-2.5 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-primary hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 col-span-2 sm:col-span-1 flex flex-col items-center group cursor-pointer relative overflow-hidden">
-                <div className="absolute top-1.5 right-2 flex items-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                </div>
-                <div className="w-7 h-7 rounded-lg bg-primary-container/40 text-primary flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all">
-                  <span className="material-symbols-outlined text-[16px]">insights</span>
-                </div>
-                <div className="font-display font-bold text-xs text-on-surface group-hover:text-primary transition-colors">
-                  Elevate 360
-                </div>
-                <div className="text-[10px] text-on-surface-variant font-body">Performance</div>
-              </div>
+              ))}
             </div>
-          </div>
+          </article>
         </div>
 
-        {/* Right Sidebar Column (~30% / 4 cols) */}
-        <div className="lg:col-span-4 flex flex-col justify-between gap-3">
-          {/* Step 2: Metric Card 1 — $10M+ */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm hover:shadow-md hover:border-google-blue transition-all duration-300 group flex-1 flex flex-col justify-center google-animated-border ${revealClass(
-              2
-            )}`}
-          >
-            <div>
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="font-display text-2xl sm:text-3xl font-bold text-google-blue">
-                    $10M+
-                  </div>
-                  <span className="w-2 h-2 rounded-full bg-google-blue animate-pulse"></span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-[#E6F4EA] flex items-center justify-center">
-                  <span className="material-symbols-outlined text-google-green text-[18px]">
-                    attach_money
-                  </span>
-                </div>
-              </div>
-              <h5 className="font-display text-sm font-bold text-on-surface mt-1.5">
-                EPP ROI Delivered
-              </h5>
-              <p className="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
-                Delivered across 15+ AI solutions deployed within Google Cloud ecosystem.
-              </p>
+        {/* Right Sidebar Column (4 cols): Verified Portfolio Outcomes */}
+        <aside className="lg:col-span-4 flex flex-col justify-between gap-4">
+          {/* Metric 1: $10M+ */}
+          <div className="bg-white border border-slate-200 border-t-4 border-t-[#1A73E8] p-5 rounded-b shadow-[0_1px_2px_rgba(15,23,42,0.03)] flex-1 flex flex-col justify-center">
+            <div className="flex items-baseline justify-between border-b border-slate-100 pb-2 mb-2.5">
+              <div className="font-serif text-3xl sm:text-4xl font-bold text-[#1A73E8]">$10M+</div>
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#188038] bg-[#E6F4EA] px-2.5 py-0.5 rounded">
+                Verified ROI
+              </span>
             </div>
+            <h4 className="font-serif text-base font-bold text-slate-900">EPP ROI Delivered</h4>
+            <p className="font-sans text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+              Delivered across 15+ AI solutions deployed within Google Cloud ecosystem.
+            </p>
           </div>
 
-          {/* Step 4: Row 2 Right — Metric Card 2 ($10B+) */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm hover:shadow-md hover:border-google-green transition-all duration-300 group flex-1 flex flex-col justify-center google-animated-border ${revealClass(
-              4
-            )}`}
-          >
-            <div>
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="font-display text-2xl sm:text-3xl font-bold text-google-blue">
-                    $10B+
-                  </div>
-                  <span className="w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-[#E6F4EA] flex items-center justify-center">
-                  <span className="material-symbols-outlined text-google-green text-[18px]">
-                    trending_up
-                  </span>
-                </div>
-              </div>
-              <h5 className="font-display text-sm font-bold text-on-surface mt-1.5">
-                TCV Supported
-              </h5>
-              <p className="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
-                Supported through RFP Accelerator &amp; PitchGen Enterprise Applications.
-              </p>
+          {/* Metric 2: $10B+ */}
+          <div className="bg-white border border-slate-200 border-t-4 border-t-[#188038] p-5 rounded-b shadow-[0_1px_2px_rgba(15,23,42,0.03)] flex-1 flex flex-col justify-center">
+            <div className="flex items-baseline justify-between border-b border-slate-100 pb-2 mb-2.5">
+              <div className="font-serif text-3xl sm:text-4xl font-bold text-[#1A73E8]">$10B+</div>
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#1A73E8] bg-[#E8F0FE] px-2.5 py-0.5 rounded">
+                Commercial Scale
+              </span>
             </div>
+            <h4 className="font-serif text-base font-bold text-slate-900">TCV Supported</h4>
+            <p className="font-sans text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+              Supported through RFP Accelerator &amp; PitchGen Enterprise Applications.
+            </p>
           </div>
 
-          {/* Step 6: Row 3 Right — Metric Card 3 (40%) */}
-          <div
-            className={`bg-white rounded-2xl border border-outline-variant/40 p-4 shadow-sm hover:shadow-md hover:border-primary transition-all duration-300 group flex-1 flex flex-col justify-center google-animated-border ${revealClass(
-              6
-            )}`}
-          >
-            <div>
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="font-display text-2xl sm:text-3xl font-bold text-google-blue">
-                    40%
-                  </div>
-                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-                </div>
-                <div className="w-8 h-8 rounded-full bg-[#E8F0FE] flex items-center justify-center">
-                  <span className="material-symbols-outlined text-google-blue text-[18px]">
-                    schedule
-                  </span>
-                </div>
-              </div>
-              <h5 className="font-display text-sm font-bold text-on-surface mt-1.5">
-                Engineering Spend Reduction Targeted
-              </h5>
-              <p className="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
-                Co-creating solutions for engineering excellence through Google stack AI SDLC &amp;
-                Dev Intelligence models.
-              </p>
+          {/* Metric 3: 40% */}
+          <div className="bg-white border border-slate-200 border-t-4 border-t-[#0F2942] p-5 rounded-b shadow-[0_1px_2px_rgba(15,23,42,0.03)] flex-1 flex flex-col justify-center">
+            <div className="flex items-baseline justify-between border-b border-slate-100 pb-2 mb-2.5">
+              <div className="font-serif text-3xl sm:text-4xl font-bold text-[#1A73E8]">40%</div>
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded">
+                AI SDLC Target
+              </span>
             </div>
+            <h4 className="font-serif text-base font-bold text-slate-900">
+              Engineering Spend Reduction Targeted
+            </h4>
+            <p className="font-sans text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
+              Co-creating solutions for engineering excellence through Google stack AI SDLC &amp;
+              Dev Intelligence models.
+            </p>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
   );

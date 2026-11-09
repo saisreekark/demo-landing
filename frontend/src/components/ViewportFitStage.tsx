@@ -5,14 +5,14 @@ interface ViewportFitStageProps {
 }
 
 /**
- * Presentation-style auto-scaling stage that guarantees the entire page content
- * fits within the remaining viewport height and width without any scrolling,
- * and without clipping or breaking any inner component proportions.
+ * Full-bleed viewport-fit stage that uses 100% of the horizontal screen real estate
+ * while scaling vertically if needed so the active section never overflows or clips.
  */
 export const ViewportFitStage: React.FC<ViewportFitStageProps> = ({ children }) => {
   const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState<number>(1);
+  const [canvasWidth, setCanvasWidth] = useState<number>(1440);
   const [scaledHeight, setScaledHeight] = useState<number | undefined>(undefined);
 
   const recomputeScale = useCallback(() => {
@@ -22,16 +22,18 @@ export const ViewportFitStage: React.FC<ViewportFitStageProps> = ({ children }) 
 
     const availW = stageEl.clientWidth;
     const availH = stageEl.clientHeight;
-    const naturalW = canvasEl.offsetWidth || 1280;
+    if (availW <= 0 || availH <= 0) return;
+
+    // Measure natural height at the current full width
     const naturalH = canvasEl.offsetHeight || 1;
+    const nextScale = Math.max(0.55, Math.min(1, (availH - 12) / naturalH));
 
-    if (availW <= 0 || availH <= 0 || naturalH <= 0) return;
-
-    const scaleX = (availW - 32) / naturalW;
-    const scaleY = (availH - 20) / naturalH;
-    const nextScale = Math.max(0.45, Math.min(1, scaleX, scaleY));
+    // Compensate width by 1/nextScale so after transform: scale(nextScale),
+    // the rendered width always equals 100% of availW (zero side margins).
+    const compensatedW = Math.floor(availW / nextScale);
 
     setScale(nextScale);
+    setCanvasWidth(compensatedW);
     setScaledHeight(Math.ceil(naturalH * nextScale));
   }, []);
 
@@ -48,8 +50,8 @@ export const ViewportFitStage: React.FC<ViewportFitStageProps> = ({ children }) 
     if (canvasEl) observer.observe(canvasEl);
 
     window.addEventListener('resize', recomputeScale);
-    const t1 = window.setTimeout(recomputeScale, 60);
-    const t2 = window.setTimeout(recomputeScale, 300);
+    const t1 = window.setTimeout(recomputeScale, 50);
+    const t2 = window.setTimeout(recomputeScale, 250);
 
     return () => {
       observer.disconnect();
@@ -62,11 +64,11 @@ export const ViewportFitStage: React.FC<ViewportFitStageProps> = ({ children }) 
   return (
     <div
       ref={stageRef}
-      className="flex-1 w-full overflow-hidden flex items-center justify-center relative px-2"
+      className="flex-1 w-full overflow-hidden flex items-start justify-center relative"
     >
       <div
         style={{
-          width: `${Math.ceil(1280 * scale)}px`,
+          width: '100%',
           height: scaledHeight ? `${scaledHeight}px` : 'auto',
           position: 'relative',
         }}
@@ -75,7 +77,7 @@ export const ViewportFitStage: React.FC<ViewportFitStageProps> = ({ children }) 
         <div
           ref={canvasRef}
           style={{
-            width: '1280px',
+            width: `${canvasWidth}px`,
             transform: `scale(${scale})`,
             transformOrigin: 'top center',
           }}
