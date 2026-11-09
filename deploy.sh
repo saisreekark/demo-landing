@@ -3,6 +3,14 @@ set -euo pipefail
 
 export CLOUDSDK_METRICS_ENVIRONMENT="${CLOUDSDK_METRICS_ENVIRONMENT:+$CLOUDSDK_METRICS_ENVIRONMENT }datacloud.antigravity"
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "${SCRIPT_DIR}/.env" ]]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "${SCRIPT_DIR}/.env"
+  set +a
+fi
+
 # ── Configuration ──────────────────────────────────────────────────────────────
 PROJECT_ID="${PROJECT_ID:-gtm-cloud-helpdesk}"
 PROJECT_NUMBER="${PROJECT_NUMBER:-653428233292}"

@@ -17,6 +17,23 @@ from pydantic import BaseModel, Field
 logger = logging.getLogger("demo-landing")
 logging.basicConfig(level=logging.INFO)
 
+
+def _load_local_dotenv() -> None:
+    for env_path in (
+        Path(__file__).resolve().parent.parent / ".env",
+        Path(__file__).resolve().parent / ".env",
+    ):
+        if env_path.is_file():
+            for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+                line = raw_line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, val = line.split("=", 1)
+                os.environ.setdefault(key.strip(), val.strip().strip("'\""))
+
+
+_load_local_dotenv()
+
 PROJECT_ID = os.getenv("GCP_PROJECT_ID", "gtm-cloud-helpdesk")
 REGION = os.getenv("GCP_REGION", "us-central1")
 CLOUDSQL_CONNECTION_NAME = os.getenv(

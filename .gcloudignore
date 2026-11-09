@@ -6,3 +6,4 @@ docs/stitch/stitch-mcp-creds.json
 .git/
 .venv/
 __pycache__/
+.env
