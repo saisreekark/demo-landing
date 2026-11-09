@@ -1,0 +1,8 @@
+node_modules
+frontend/node_modules
+frontend/dist
+docs/stitch/stitch-mcp-creds.json
+*.zip
+.git
+.venv
+__pycache__

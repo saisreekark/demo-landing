@@ -1,0 +1,15 @@
+[project]
+name = "demo-landing-backend"
+version = "1.0.0"
+description = "FastAPI static SPA server and health check endpoint for Google Cloud × Cognizant Executive Showcase"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "cloud-sql-python-connector[pg8000]>=1.23.0",
+    "fastapi>=0.115.0",
+    "google-auth>=2.62.1",
+    "httpx>=0.28.1",
+    "psycopg[binary]>=3.3.8",
+    "requests>=2.34.2",
+    "uvicorn[standard]>=0.32.0",
+]

@@ -1,0 +1,59 @@
+{
+  "projectId": "16618768528408665144",
+  "projectUrl": "https://stitch.withgoogle.com/projects/16618768528408665144",
+  "title": "Enterprise AI Transformation Showcase — Google Cloud × Cognizant",
+  "designSystem": "docs/stitch/DESIGN.md",
+  "screens": [
+    {
+      "index": 1,
+      "id": "1ee212c9493849dba5159afc2cdad06f",
+      "label": "Newsletter - Base",
+      "title": "Google Cloud × Cognizant Executive Showcase Hub (Light M3 — Newsletter Base)",
+      "dimensions": {
+        "width": 1280,
+        "height": 6623
+      },
+      "canvasPosition": {
+        "x": 8557,
+        "y": 11530
+      },
+      "htmlFile": "designs/01-newsletter-base-1ee212c9.html",
+      "screenshotFile": "designs/01-newsletter-base-1ee212c9.jpg",
+      "role": "Primary landing page / executive newsletter layout"
+    },
+    {
+      "index": 2,
+      "id": "d38e688ffedd4626bbf493b39aabb37c",
+      "label": "Google Cloud × Cognizant Executive Showcase Hub (Light M3)",
+      "title": "Google Cloud × Cognizant Executive Showcase Hub (Light M3 — Interactive Hub Companion)",
+      "dimensions": {
+        "width": 1280,
+        "height": 1024
+      },
+      "canvasPosition": {
+        "x": 9901,
+        "y": 11530
+      },
+      "htmlFile": "designs/02-executive-showcase-hub-d38e688f.html",
+      "screenshotFile": null,
+      "role": "Interactive hub companion view (1/5 slide dock, Prioritization quadrant tester, Live Telemetry console)"
+    },
+    {
+      "index": 3,
+      "id": "a598ac23b6164160bec65ace7c5d28b5",
+      "label": "Newsletter - Test 1 / Zip Export",
+      "title": "Google Cloud × Cognizant Executive Showcase Hub (Light M3 — Zip Export Snapshot)",
+      "dimensions": {
+        "width": 1280,
+        "height": 1024
+      },
+      "canvasPosition": {
+        "x": 23186,
+        "y": 8836
+      },
+      "htmlFile": "designs/03-zip-export-test-a598ac23.html",
+      "screenshotFile": "designs/03-zip-export-test-a598ac23.png",
+      "role": "Uploaded zip archive snapshot (stitch_enterprise_ai_transformation_showcase (2).zip)"
+    }
+  ]
+}

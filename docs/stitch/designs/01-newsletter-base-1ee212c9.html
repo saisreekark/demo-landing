@@ -1,0 +1,1522 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head><link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&amp;family=Google+Sans+Text:wght@400;500;700&amp;display=swap" rel="stylesheet" class=""><style id="nexus-motion-styles" class="">  @keyframes hubFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.03); }
+  }
+  @keyframes orbitClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.35); opacity: 1; }
+  }
+  .animate-orbit-clockwise {
+    animation: orbitClockwise 24s linear infinite;
+    transform-origin: center center;
+  }
+  .animate-pulse-dot-1 { animation: dotPulse 2s ease-in-out infinite 0s; }
+  .animate-pulse-dot-2 { animation: dotPulse 2s ease-in-out infinite 0.5s; }
+  .animate-pulse-dot-3 { animation: dotPulse 2s ease-in-out infinite 1s; }
+  .animate-pulse-dot-4 { animation: dotPulse 2s ease-in-out infinite 1.5s; }
+  .dial-quadrant-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dial-quadrant-card:hover {
+    background: radial-gradient(circle at center, rgba(11,87,208,0.06) 0%, rgba(255,255,255,0.8) 70%);
+  }
+  * {
+    font-family: 'Google Sans', 'Google Sans Text', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  }
+  body {
+    font-family: 'Google Sans', 'Google Sans Text', sans-serif !important;
+  }
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined' !important;
+  }</style>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>Google Cloud × Cognizant | Executive Transformation Showcase</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            surface: "#FAF9FD",
+            "surface-dim": "#ECEEF4",
+            "surface-container": "#FFFFFF",
+            "surface-container-low": "#F4F6FB",
+            "surface-container-high": "#E8EDF5",
+            "surface-container-highest": "#DFE4EE",
+            "surface-container-lowest": "#FFFFFF",
+            primary: "#0B57D0",
+            "primary-container": "#D3E3FD",
+            "on-primary-container": "#041E49",
+            "google-blue": "#1A73E8",
+            "google-green": "#188038",
+            "google-yellow": "#B06000",
+            "google-red": "#D93025",
+            secondary: "#188038",
+            tertiary: "#B06000",
+            "on-surface": "#1F1F1F",
+            "on-surface-variant": "#444746",
+            outline: "#74777F",
+            "outline-variant": "#C4C7D0"
+          },
+          fontFamily: {
+            display: ["Space Grotesk", "sans-serif"],
+            body: ["Inter", "sans-serif"],
+            mono: ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAF9FD;
+        color: #1F1F1F;
+        font-family: 'Inter', sans-serif;
+      }
+    }
+    .glow-radial-blue {
+      background: radial-gradient(circle 500px at 50% 50%, rgba(26, 115, 232, 0.08) 0%, rgba(250, 249, 253, 0) 70%);
+    }
+    .glow-radial-green {
+      background: radial-gradient(circle 450px at 50% 50%, rgba(24, 128, 56, 0.07) 0%, rgba(250, 249, 253, 0) 70%);
+    }
+    .glow-radial-yellow {
+      background: radial-gradient(circle 420px at 50% 50%, rgba(234, 134, 0, 0.07) 0%, rgba(250, 249, 253, 0) 70%);
+    }
+    .m3-glass-surface {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .obsidian-glass-interactive {
+      background: #FFFFFF;
+      border: 1px solid #E0E2EC;
+      box-shadow: 0 4px 16px -2px rgba(11, 87, 208, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .obsidian-glass-interactive:hover {
+      border-color: #0B57D0;
+      box-shadow: 0 12px 28px -4px rgba(11, 87, 208, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+    .svg-dash-anim {
+      stroke-dasharray: 6 6;
+      animation: dashFlow 20s linear infinite;
+    }
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -120;
+      }
+    }
+  </style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&amp;family=Google+Sans:wght@400;500;700&amp;family=Google+Sans+Text:wght@400;500;700&amp;display=swap" data-snapdom="injected-import"></head><body class="bg-surface text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen relative overflow-x-hidden"><svg aria-hidden="true" class="inline-defs-container" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<!-- Atmospheric Executive Light Lighting -->
+<div class="fixed top-[-100px] left-1/2 -translate-x-1/2 w-[1100px] h-[650px] glow-radial-blue pointer-events-none z-0"></div>
+<div class="fixed top-[45%] -left-32 w-[650px] h-[650px] glow-radial-green pointer-events-none z-0"></div>
+<div class="fixed top-[55%] -right-32 w-[650px] h-[650px] glow-radial-yellow pointer-events-none z-0"></div>
+<!-- 1. FLOATING EXECUTIVE HEADER & BRAND LOCKUP -->
+<header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-8 max-w-7xl mx-auto pointer-events-none">
+<div class="bg-white/90 backdrop-blur-xl rounded-full px-5 py-2.5 pointer-events-auto flex items-center shadow-md border border-outline-variant/40 gap-6 justify-between"><!-- Brand Lockup -->
+<a class="flex items-center gap-3 cursor-pointer group select-none" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+  <div class="flex items-center gap-2.5">
+    <div class="w-8 h-8 rounded-full bg-google-blue/10 flex items-center justify-center border border-google-blue/20 text-google-blue group-hover:scale-105 transition-transform">
+      <span class="material-symbols-outlined text-[18px]">cloud</span>
+    </div>
+    <div class="flex items-center gap-1.5">
+      <span class="font-display font-bold text-sm tracking-tight text-on-surface">Google Cloud</span>
+      <span class="text-outline-variant text-xs">×</span>
+      <span class="font-display font-medium text-sm tracking-tight text-on-surface-variant">Cognizant</span>
+    </div>
+  </div>
+  
+</a>
+
+<!-- Executive Navigation Links -->
+<nav class="hidden md:flex items-center gap-1 bg-surface-container-low px-1.5 py-1 rounded-full border border-outline-variant/30 ml-auto">
+  <a class="px-3.5 py-1.5 rounded-full font-mono text-xs font-semibold text-on-primary-container bg-primary-container shadow-sm transition-all" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Overview</a>
+  <a class="px-3 py-1.5 rounded-full font-mono text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all cursor-pointer" data-path="pillar-01-delivery" href="#pillar-delivery" onclick="document.getElementById('pillar-delivery')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;">01 Delivery</a>
+  <a class="px-3 py-1.5 rounded-full font-mono text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all cursor-pointer" data-path="pillar-02-partnership" href="#pillar-partnership" onclick="document.getElementById('pillar-partnership')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;">02 Partnership</a>
+  <a class="px-3 py-1.5 rounded-full font-mono text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all cursor-pointer" data-path="pillar-03-transformation" href="#pillar-transformation" onclick="document.getElementById('pillar-transformation')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;">03 Transformation</a>
+  <a class="px-3 py-1.5 rounded-full font-mono text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all cursor-pointer" data-path="pillar-04-future" href="#pillar-future" onclick="document.getElementById('pillar-future')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;">04 Future</a>
+</nav>
+
+<!-- Executive Actions -->
+<div class="flex items-center gap-2">
+  
+  
+</div></div>
+</header>
+<!-- MAIN BODY -->
+<main class="relative z-10 pt-28">
+<!-- ================= 2. HERO & EXPANSIVE 4-WAY DIAMOND NEXUS ================= -->
+<section class="pt-8 pb-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto flex flex-col items-center text-center pt-28" id="overview">
+<!-- Eyebrow Pill -->
+
+<!-- Title Headline -->
+<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-on-surface max-w-5xl leading-[1.15]">
+        Accelerating Enterprise Transformation Through
+        <span class="bg-gradient-to-r from-google-blue via-primary to-google-green bg-clip-text text-transparent"> AI &amp; Delivery Excellence</span>
+</h1>
+<p class="font-body text-base sm:text-lg text-on-surface-variant max-w-3xl mt-5 leading-relaxed">
+        Building sovereign enterprise capabilities, scaling Agentic AI solutions, delivering validated EPP ROI, and shaping the future of autonomous cloud workflows for Global 2000 leaders.
+      </p>
+<!-- High-Impact 4 KPI Ribbon (M3 Light Cards) -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl mt-12"><div class="p-4 rounded-2xl bg-white border border-outline-variant/40 shadow-sm flex items-center gap-3.5 hover:shadow-md transition-shadow group"><div class="w-11 h-11 rounded-xl bg-google-blue/10 flex items-center justify-center text-google-blue shrink-0 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">cloud_done</span></div><div class="text-left"><div class="font-display text-2xl font-bold text-on-surface">100%</div><div class="font-body text-xs text-on-surface-variant font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-google-blue"></span>Google Cloud Native</div></div></div><div class="p-4 rounded-2xl bg-white border border-outline-variant/40 shadow-sm flex items-center gap-3.5 hover:shadow-md transition-shadow group"><div class="w-11 h-11 rounded-xl bg-google-green/10 flex items-center justify-center text-google-green shrink-0 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">auto_awesome</span></div><div class="text-left"><div class="font-display text-2xl font-bold text-on-surface">55K+</div><div class="font-body text-xs text-on-surface-variant font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-google-green"></span>Build with Gemini</div></div></div><div class="p-4 rounded-2xl bg-white border border-outline-variant/40 shadow-sm flex items-center gap-3.5 hover:shadow-md transition-shadow group"><div class="w-11 h-11 rounded-xl bg-google-yellow/10 flex items-center justify-center text-[#B06000] shrink-0 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">monitoring</span></div><div class="text-left"><div class="font-display text-2xl font-bold text-on-surface">$10M+</div><div class="font-body text-xs text-on-surface-variant font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#B06000]"></span>EPP Verified ROI</div></div></div><div class="p-4 rounded-2xl bg-white border border-outline-variant/40 shadow-sm flex items-center gap-3.5 hover:shadow-md transition-shadow group"><div class="w-11 h-11 rounded-xl bg-[#FCE8E6] flex items-center justify-center text-[#D93025] shrink-0 group-hover:scale-105 transition-transform"><span class="material-symbols-outlined text-[24px]">speed</span></div><div class="text-left"><div class="font-display text-2xl font-bold text-on-surface">&lt;4.2m</div><div class="font-body text-xs text-on-surface-variant font-medium flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#EA4335]"></span>SRE MTTR Velocity</div></div></div></div>
+<!-- EXPANSIVE RE-ARCHITECTED 4-WAY DIAMOND CONSTELLATION - M3 LIGHT -->
+<div class="relative w-full max-w-5xl mt-12 mb-12 flex flex-col items-center justify-center select-none" id="radar-dial-section"><div class="relative w-[820px] h-[820px] max-w-full flex items-center justify-center"><div class="absolute inset-0 rounded-full border-2 border-outline-variant/60 shadow-[0_0_0_1px_rgba(0,0,0,0.04)] pointer-events-none"></div><div class="absolute -inset-8 rounded-full border border-outline-variant/40 border-dashed pointer-events-none"></div><div class="absolute inset-8 rounded-full border border-outline-variant/50 pointer-events-none"></div><div class="absolute inset-0 pointer-events-none animate-orbit-clockwise z-10"><div class="absolute -top-4 left-1/3 w-6 h-6 rounded-full bg-[#FBBC05]/40 blur-md animate-pulse-dot-1"></div><div class="absolute -top-4 left-1/3 w-3 h-3 rounded-full bg-[#FBBC05] shadow-[0_0_8px_#FBBC05]"></div><div class="absolute top-1/4 -right-4 w-7 h-7 rounded-full bg-google-blue/40 blur-md animate-pulse-dot-2"></div><div class="absolute top-1/4 -right-4 w-3 h-3 rounded-full bg-google-blue shadow-[0_0_8px_#1A73E8]"></div><div class="absolute bottom-1/4 -left-4 w-7 h-7 rounded-full bg-[#EA4335]/40 blur-md animate-pulse-dot-3"></div><div class="absolute bottom-1/4 -left-4 w-3 h-3 rounded-full bg-[#EA4335] shadow-[0_0_8px_#EA4335]"></div><div class="absolute -bottom-4 right-1/3 w-7 h-7 rounded-full bg-google-green/40 blur-md animate-pulse-dot-4"></div><div class="absolute -bottom-4 right-1/3 w-3 h-3 rounded-full bg-google-green shadow-[0_0_8px_#34A853]"></div></div><div class="relative w-[820px] h-[820px] max-w-full rounded-full border-2 border-outline-variant/60 bg-white shadow-2xl overflow-hidden grid grid-cols-2 grid-rows-2"><div class="absolute top-0 bottom-0 left-1/2 w-0.5 -translate-x-1/2 bg-outline-variant/60 z-10 pointer-events-none"></div><div class="absolute left-0 right-0 top-1/2 h-0.5 -translate-y-1/2 bg-outline-variant/60 z-10 pointer-events-none"></div><div class="p-6 sm:p-8 flex flex-col justify-start items-center text-center cursor-pointer transition-all duration-300 hover:bg-google-green/5 border-r border-b border-outline-variant/50 dial-quadrant-card group" id="quadrant-future" onclick="selectRadarQuadrant('future')"><div class="w-full h-full flex flex-col justify-end items-end text-right pr-20 pb-20 relative z-10"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6F4EA] border border-secondary/40 text-google-green font-mono text-[11px] font-bold tracking-wider uppercase mb-1.5 shadow-sm">VISION 2027</div><h3 class="font-display text-xl sm:text-2xl font-bold text-on-surface group-hover:text-google-green transition-colors leading-tight mb-1">Future Roadmap</h3><p class="font-body text-xs text-on-surface-variant font-medium italic max-w-[210px] leading-relaxed mb-2.5">“Want to know more about how future would like”</p></div></div><div class="p-6 sm:p-8 flex flex-col justify-start items-center text-center cursor-pointer transition-all duration-300 hover:bg-google-blue/5 border-l border-b border-outline-variant/50 dial-quadrant-card group bg-google-blue/10" id="quadrant-transformation" onclick="selectRadarQuadrant('transformation')"><div class="w-full h-full flex flex-col justify-end items-start text-left pl-20 pb-20 relative z-10"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8F0FE] border border-google-blue/40 text-google-blue font-mono text-[11px] font-bold tracking-wider uppercase mb-1.5 shadow-sm">GTM ACCELERATION</div><h3 class="font-display text-xl sm:text-2xl font-bold text-on-surface group-hover:text-google-blue transition-colors leading-tight mb-1">Transformation</h3><p class="font-body text-xs text-on-surface-variant font-medium italic max-w-[210px] leading-relaxed mb-2.5">“Know more about sales transformation”</p></div></div><div class="p-6 sm:p-8 flex flex-col justify-end items-center text-center cursor-pointer transition-all duration-300 hover:bg-google-yellow/5 border-r border-t border-outline-variant/50 dial-quadrant-card group" id="quadrant-delivery" onclick="selectRadarQuadrant('delivery')"><div class="w-full h-full flex flex-col justify-start items-end text-right pr-20 pt-20 relative z-10"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FEF7E0] border border-tertiary/40 text-[#B06000] font-mono text-[11px] font-bold tracking-wider uppercase mb-1.5 shadow-sm">OPERATIONS &amp; TRACKS</div><h3 class="font-display text-xl sm:text-2xl font-bold text-on-surface group-hover:text-[#B06000] transition-colors leading-tight mb-1">Delivery Highlights</h3><p class="font-body text-xs text-on-surface-variant font-medium italic max-w-[210px] leading-relaxed">“Managed services best practices”</p></div></div><div class="p-6 sm:p-8 flex flex-col justify-end items-center text-center cursor-pointer transition-all duration-300 hover:bg-[#FCE8E6] border-l border-t border-outline-variant/50 dial-quadrant-card group" id="quadrant-partnership" onclick="selectRadarQuadrant('partnership')"><div class="w-full h-full flex flex-col justify-start items-start text-left pl-20 pt-20 relative z-10"><div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FCE8E6] border border-outline-variant/50 text-[#D93025] font-mono text-[11px] font-bold tracking-wider uppercase mb-1.5 shadow-sm">ALLIANCE &amp; QUOTE</div><h3 class="font-display text-xl sm:text-2xl font-bold text-on-surface group-hover:text-[#D93025] transition-colors leading-tight mb-1">Partnership</h3><p class="font-body text-xs text-on-surface-variant font-medium italic max-w-[220px] leading-relaxed">“Google products and our solutions playing in center, highlights, verbatim”</p></div></div></div><div class="absolute z-20 w-36 h-36 rounded-full bg-white shadow-2xl border-2 border-outline-variant/60 flex flex-col items-center justify-center p-3 cursor-pointer hover:scale-105 transition-transform duration-300" onclick="openModal('modal-ecosystem')"><div class="flex items-center gap-1.5 mb-1.5"><span class="w-2.5 h-2.5 rounded-full bg-google-blue shadow-[0_0_6px_#1A73E8]"></span><span class="w-2.5 h-2.5 rounded-full bg-[#EA4335] shadow-[0_0_6px_#EA4335]"></span><span class="w-2.5 h-2.5 rounded-full bg-[#FBBC05] shadow-[0_0_6px_#FBBC05]"></span><span class="w-2.5 h-2.5 rounded-full bg-google-green shadow-[0_0_6px_#34A853]"></span></div><span class="font-display font-bold text-[13px] tracking-tight text-on-surface text-center">4 TENETS CORE</span><span class="font-mono text-[10px] text-on-surface-variant mt-0.5 text-center font-semibold tracking-wider" id="hub-state-label">TRANSFORMATION</span></div></div><div class="mt-8 flex items-center justify-center z-20 w-full max-w-xl"></div></div>
+<!-- 3. REFINED HORIZONTAL M3 LIGHT ELEVATED CTAs -->
+<div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-6 relative z-20">
+<!-- CTA 1: Autonomous POV -->
+<button class="p-6 rounded-3xl flex flex-col justify-between group cursor-pointer text-left bg-white hover:bg-surface-container-low border border-outline-variant/50 hover:border-secondary/60 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden" onclick="openModal('modal-autonomous')">
+<div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-secondary to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-start gap-4 mb-3">
+<div class="w-11 h-11 rounded-2xl bg-[#E6F4EA] border border-secondary/30 flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-white group-hover:scale-105 transition-all shadow-sm">
+<span class="material-symbols-outlined text-secondary group-hover:text-white text-[22px]">route</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-display text-sm font-bold text-on-surface group-hover:text-secondary transition-colors">Autonomous POV</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-secondary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">north_east</span>
+</div>
+<span class="font-mono text-[10px] text-secondary font-semibold tracking-wider uppercase block">Want to know our POV?</span>
+</div>
+</div>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed mb-4">
+    Examine our 3-tier enterprise roadmap moving from assisted copilots to self-healing agent swarms.
+  </p>
+<div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between mt-auto w-full">
+<span class="font-mono text-[11px] text-secondary font-semibold group-hover:underline flex items-center gap-1">
+<span class="">Explore Roadmap</span>
+<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+<span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant/40 text-on-surface-variant uppercase tracking-wider font-medium">Tier 1–3</span>
+</div>
+</button>
+<!-- CTA 2: Sales Transformation -->
+<button class="p-6 rounded-3xl flex flex-col justify-between group cursor-pointer text-left bg-white hover:bg-surface-container-low border border-outline-variant/50 hover:border-primary/60 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden" onclick="openModal('modal-sales')">
+<div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-start gap-4 mb-3">
+<div class="w-11 h-11 rounded-2xl bg-primary-container/40 border border-primary/30 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white group-hover:scale-105 transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary group-hover:text-white text-[22px]">trending_up</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+<span class="font-display text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Sales Transformation</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">north_east</span>
+</div>
+<span class="font-mono text-[10px] text-primary font-semibold tracking-wider uppercase block">Know more about sales</span>
+</div>
+</div>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed mb-4">
+    How PitchGen &amp; RFP Acc are accelerating $10B+ pipeline with automated proposal synthesis.
+  </p>
+<div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between mt-auto w-full">
+<span class="font-mono text-[11px] text-primary font-semibold group-hover:underline flex items-center gap-1">
+<span class="">View Pipeline Accel</span>
+<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+<span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant/40 text-on-surface-variant uppercase tracking-wider font-medium">$10B+ TCV</span>
+</div>
+</button>
+<!-- CTA 3: Managed Services -->
+<button class="p-6 rounded-3xl flex flex-col justify-between group cursor-pointer text-left bg-white hover:bg-surface-container-low border border-outline-variant/50 hover:border-tertiary/60 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden" onclick="openModal('modal-managed-services')">
+<div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-tertiary to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+<div class="flex items-start gap-4 mb-3">
+<div class="w-11 h-11 rounded-2xl bg-[#FEF7E0] border border-tertiary/30 flex items-center justify-center shrink-0 group-hover:bg-tertiary group-hover:text-white group-hover:scale-105 transition-all shadow-sm">
+<span class="material-symbols-outlined text-tertiary group-hover:text-white text-[22px]">security_update_good</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-display text-sm font-bold text-on-surface group-hover:text-tertiary transition-colors">Managed Services</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-tertiary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">north_east</span>
+</div>
+<span class="font-mono text-[10px] text-tertiary font-semibold tracking-wider uppercase block">Managed services best practices</span>
+</div>
+</div>
+<p class="font-body text-xs text-on-surface-variant leading-relaxed mb-4">
+    Best practices from Cognizant Neuro™ SRE, continuous compliance, and autonomous runbooks.
+  </p>
+<div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between mt-auto w-full">
+<span class="font-mono text-[11px] text-tertiary font-semibold group-hover:underline flex items-center gap-1">
+<span class="">Examine Framework</span>
+<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+</span>
+<span class="font-mono text-[10px] px-2.5 py-0.5 rounded-full bg-surface-container-high border border-outline-variant/40 text-on-surface-variant uppercase tracking-wider font-medium">Neuro™ SRE</span>
+</div>
+</button>
+</div>
+</section>
+<!-- ================= 4. STREAMLINED EXECUTIVE PILLAR SECTIONS (M3 LIGHT) ================= -->
+<!-- PILLAR 01: TRANSFORMATION -->
+<section class="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-t border-outline-variant/30 pt-28" id="pillar-delivery" style="scroll-margin-top: 100px;">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<div class="flex items-center gap-2 mb-2 font-mono text-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-[#E6F4EA] text-secondary font-bold border border-secondary/30">PILLAR 01</span>
+<span class="text-on-surface-variant font-medium">Architecture Modernization &amp; Governance</span>
+</div>
+<h2 class="font-display text-3xl sm:text-4xl text-on-surface font-bold tracking-tight">Delivery Highlights</h2>
+<p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1.5 leading-relaxed">
+  Establishing a structured transformation engine to accelerate AI-led modern architectures.
+</p>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface border border-outline-variant/40 font-mono text-xs font-semibold shadow-sm transition-all cursor-pointer" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><span class="material-symbols-outlined text-[18px]">arrow_upward</span><span class="">Back to Landing Page</span></a>
+</div>
+</div>
+<!-- 3 Initiatives Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+  <!-- Left / Main Column (8 cols): Hub Services, CDE CoE, Support, Partner Programs -->
+  <div class="lg:col-span-8 space-y-6">
+    <!-- 1. Hub Services -->
+    <div class="bg-white p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"><div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30"><div class="flex items-center gap-2.5"><div class="w-9 h-9 rounded-xl bg-primary-container/40 flex items-center justify-center text-primary shrink-0"><span class="material-symbols-outlined text-[20px]">support_agent</span></div><div><h4 class="font-display text-base font-bold text-on-surface">Support</h4><span class="font-mono text-[10px] text-primary uppercase tracking-wider font-semibold">GCP &amp; GWS Autonomous Technical Excellence</span></div></div><span class="font-mono text-[10px] text-primary bg-primary-container/40 px-3 py-1 rounded-full font-semibold uppercase tracking-wider">SLS &amp; Productivity</span></div><div class="space-y-3 font-body text-xs sm:text-sm text-on-surface leading-relaxed"><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-[16px] text-google-blue">dns</span><span class="font-display text-xs font-bold uppercase tracking-wider text-google-blue">GCP Tech Support</span></div><p class="text-on-surface-variant">SLS reached <strong class="font-semibold text-on-surface">97.1 for Apigee</strong> and rose to <strong class="font-semibold text-on-surface">85.0 for CCaaS</strong> (up from 76.9) as of Oct 2026 via operational rigor and AI.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-[16px] text-google-green">credit_card</span><span class="font-display text-xs font-bold uppercase tracking-wider text-google-green">GCP Billing Support</span></div><p class="text-on-surface-variant">AI-driven solution boosted productivity by <strong class="font-semibold text-on-surface">16.7%</strong> and reduced CPC by <strong class="font-semibold text-google-green">14%</strong>.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="flex items-center gap-2 mb-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">domain_verification</span><span class="font-display text-xs font-bold uppercase tracking-wider text-secondary">GWS Tech &amp; Billing Support</span></div><p class="text-on-surface-variant">Increased AI adoption improved productivity by <strong class="font-semibold text-on-surface">16.3%</strong> and lowered CPC by <strong class="font-semibold text-secondary">6.6%</strong>.</p></div></div></div><div class="bg-white p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-google-blue/10 flex items-center justify-center text-google-blue shrink-0">
+            <span class="material-symbols-outlined text-[20px]">hub</span>
+          </div>
+          <div>
+            <h4 class="font-display text-base font-bold text-on-surface">Hub Services</h4>
+            <span class="font-mono text-[10px] text-google-blue uppercase tracking-wider font-semibold">Enterprise Value Realization</span>
+          </div>
+        </div>
+        <span class="font-mono text-[10px] text-google-blue bg-google-blue/10 px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Operational Impact</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-center">
+          <div class="font-display text-2xl font-bold text-google-blue">$2M</div>
+          <div class="font-body text-xs text-on-surface-variant font-medium mt-0.5">OpEx Savings Delivered</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-center">
+          <div class="font-display text-2xl font-bold text-on-surface">$26B+</div>
+          <div class="font-body text-xs text-on-surface-variant font-medium mt-0.5">Win TCV Supported</div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 text-center">
+          <div class="font-display text-2xl font-bold text-google-green">99.3%</div>
+          <div class="font-body text-xs text-on-surface-variant font-medium mt-0.5">C-SAT Achieved</div>
+        </div>
+      </div>
+      <div class="flex items-start gap-2.5 p-3 rounded-xl bg-[#E8F0FE]/40 border border-google-blue/20">
+        <span class="material-symbols-outlined text-google-blue text-[18px] shrink-0 mt-0.5">check_circle</span>
+        <p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed">
+          Delivered <strong class="font-bold text-google-blue">$2M OpEx savings</strong>, supported <strong class="font-bold text-on-surface">$26B+ win TCV</strong>, and achieved <strong class="font-bold text-google-green">99.3% C-SAT</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. CDE CoE -->
+    <div class="bg-white p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-google-green/10 flex items-center justify-center text-google-green shrink-0">
+            <span class="material-symbols-outlined text-[20px]">workspace_premium</span>
+          </div>
+          <div>
+            <h4 class="font-display text-base font-bold text-on-surface">CDE CoE</h4>
+            <span class="font-mono text-[10px] text-google-green uppercase tracking-wider font-semibold">Center of Excellence &amp; Delivery Rigor</span>
+          </div>
+        </div>
+        <span class="font-mono text-[10px] text-google-green bg-[#E6F4EA] px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Engineering Rigor</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-lg bg-[#E8F0FE] text-google-blue flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[22px]">analytics</span>
+          </div>
+          <div>
+            <div class="font-display text-xl font-bold text-on-surface">84.85% <span class="text-xs font-normal text-on-surface-variant font-body">score</span></div>
+            <div class="font-body text-xs text-on-surface-variant font-medium">NPS '26 Rollout 2 (66% coverage)</div>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-lg bg-[#E6F4EA] text-google-green flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[22px]">trending_down</span>
+          </div>
+          <div>
+            <div class="font-display text-xl font-bold text-google-green">$1.8M <span class="text-xs font-normal text-on-surface-variant font-body">Achieved</span></div>
+            <div class="font-body text-xs text-on-surface-variant font-medium">Target $1.67M · -26.26% YoY run-rate</div>
+          </div>
+        </div>
+      </div>
+      <ul class="space-y-2.5 font-body text-xs sm:text-sm text-on-surface leading-relaxed pl-1">
+        
+        <li class="flex items-start gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-google-green shrink-0 mt-2"></span>
+          <span class=""><strong class="font-semibold text-on-surface">Savings:</strong> Achieved $1.8M in 2026 savings (exceeding the $1.67M target), cutting YoY run-rate by 26.26%.</span>
+        </li>
+        <li class="flex items-start gap-2.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-google-green shrink-0 mt-2"></span>
+          <span class="">Redesigning intake to prioritize end-to-end solutioning over staffing.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 3. Support -->
+    
+
+    <!-- 4. Partner Programs -->
+    <div class="bg-white p-6 rounded-2xl border border-outline-variant/40 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-[#FEF7E0] flex items-center justify-center text-[#B06000] shrink-0">
+            <span class="material-symbols-outlined text-[20px]">storefront</span>
+          </div>
+          <div>
+            <h4 class="font-display text-base font-bold text-on-surface">Partner Programs</h4>
+            <span class="font-mono text-[10px] text-[#B06000] uppercase tracking-wider font-semibold">Ecosystem Advisory &amp; Marketplace Velocity</span>
+          </div>
+        </div>
+        <span class="font-mono text-[10px] text-[#B06000] bg-[#FEF7E0] px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Pipeline &amp; Marketplace</span>
+      </div>
+      <ul class="space-y-3 font-body text-xs sm:text-sm text-on-surface leading-relaxed">
+        <li class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="material-symbols-outlined text-[18px] text-[#B06000] shrink-0 mt-0.5">trending_up</span>
+          <div>
+            <span class="font-semibold text-on-surface">ISV Scaled Partner Advisory:</span>
+            <span class="text-on-surface-variant"> S1+ pipeline is up <strong class="text-on-surface font-semibold">20%+ YTD</strong> while S4 sits at -2%: prioritizing reviews of expiring <strong class="text-on-surface font-semibold">681 contracts</strong> for renewal.</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="material-symbols-outlined text-[18px] text-google-green shrink-0 mt-0.5">handshake</span>
+          <div>
+            <span class="font-semibold text-on-surface">Sell &amp; Service Partner Advisory:</span>
+            <span class="text-on-surface-variant"> S1+ pipeline is <strong class="text-on-surface font-semibold">16%+ above YTD</strong> and S4 exceeds expectations by <strong class="text-google-green font-semibold">5%+</strong>.</span>
+          </div>
+        </li>
+        <li class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-low border border-outline-variant/30">
+          <span class="material-symbols-outlined text-[18px] text-google-blue shrink-0 mt-0.5">shopping_bag</span>
+          <div>
+            <span class="font-semibold text-on-surface">ISV Marketplace:</span>
+            <span class="text-on-surface-variant"> Added <strong class="text-on-surface font-semibold">1,271 of 3,275 targeted listings</strong> (38.8% of 2026 goal; 49% projected year-end): 100-day improvement sprint underway.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Right Side Column (4 cols): 3 Distinct Executive Callout Cards -->
+  <div class="lg:col-span-4 space-y-5"><!-- Callout 1 (Previously 2): Large prominent callout card for AI-driven Billing Savings -->
+    <div class="bg-gradient-to-br from-white to-[#F4F6FB] rounded-2xl border-2 border-google-blue/30 p-6 shadow-md hover:shadow-lg transition-all relative overflow-hidden">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-8 h-8 rounded-lg bg-google-green/10 flex items-center justify-center text-google-green shrink-0">
+          <span class="material-symbols-outlined text-[18px]">price_check</span>
+        </span>
+        <span class="font-mono text-[10px] text-google-green font-bold uppercase tracking-wider">Value Creation Passed to Clients</span>
+      </div>
+      <h4 class="font-display text-base sm:text-lg font-bold text-on-surface leading-snug mb-3">
+        AI-driven productivity allowed passing on billing savings:
+      </h4>
+      <div class="grid grid-cols-2 gap-3 mb-3.5">
+        <div class="p-3 rounded-xl bg-white border border-outline-variant/30 text-center shadow-sm">
+          <div class="font-display text-2xl sm:text-3xl font-bold text-google-blue">14%</div>
+          <div class="font-mono text-[10px] text-on-surface-variant font-semibold mt-1 uppercase tracking-tight">GCP Billing</div>
+        </div>
+        <div class="p-3 rounded-xl bg-white border border-outline-variant/30 text-center shadow-sm">
+          <div class="font-display text-2xl sm:text-3xl font-bold text-google-green">~7%</div>
+          <div class="font-mono text-[10px] text-on-surface-variant font-semibold mt-1 uppercase tracking-tight">Workspace Tech</div>
+        </div>
+      </div>
+      <p class="font-body text-xs text-on-surface-variant leading-relaxed">
+        AI-driven productivity allowed passing on billing savings: <strong class="text-on-surface font-semibold">14% for GCP Billing</strong> and <strong class="text-on-surface font-semibold">~7% for Workspace Tech</strong>.
+      </p>
+    </div>
+
+    <!-- Callout 2 (Previously 1): Custom AI UI/UX Keynote Demos -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-google-blue/10 flex items-center justify-center text-google-blue shrink-0">
+            <span class="material-symbols-outlined text-[18px]">play_circle</span>
+          </span>
+          <span class="font-mono text-[10px] text-google-blue font-bold uppercase tracking-wider">Executive Keynote</span>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-xl bg-[#E8F0FE]/50 border border-google-blue/20 mb-3">
+        <div class="font-display text-2xl font-bold text-google-blue">18 Custom Demos</div>
+        <div class="font-mono text-[11px] text-google-blue font-semibold mt-0.5">AI UI/UX &amp; High-Fidelity Video</div>
+      </div>
+      <p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed">
+        Created <strong class="font-bold text-on-surface">18 custom AI UI/UX and video demos</strong> in support of <strong class="text-google-blue font-semibold">Thomas Kurian's Mumbai Leaders Connect.</strong></p>
+    </div>
+
+    <!-- Callout 3: Partner Advisory Performance -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-[#FEF7E0] flex items-center justify-center text-[#B06000] shrink-0">
+            <span class="material-symbols-outlined text-[18px]">pie_chart</span>
+          </span>
+          <span class="font-mono text-[10px] text-[#B06000] font-bold uppercase tracking-wider">Partner Advisory</span>
+        </div>
+        <span class="font-mono text-[10px] text-google-green bg-[#E6F4EA] px-2 py-0.5 rounded font-semibold">YTD Surpassed</span>
+      </div>
+      <p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed">
+        <strong class="text-on-surface font-semibold">Partner Advisory:</strong> ISV S1+ pipeline is up <strong class="text-google-blue font-bold">20%+ YTD</strong> (S4 at -2%), while Sell &amp; Service S1+ is <strong class="text-google-green font-bold">16%+ above YTD</strong> and S4 beats expectations by <strong class="text-google-green font-bold">5%+</strong>.
+      </p>
+    </div></div>
+</div>
+<!-- Financial Metrics Ribbon -->
+
+</section>
+<!-- PILLAR 02: PARTNERSHIP -->
+<section class="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-t border-outline-variant/30 pt-28" id="pillar-partnership">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<div class="flex items-center gap-2 mb-2 font-mono text-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-primary-container/40 text-primary font-bold border border-primary/30">PILLAR 02</span>
+<span class="text-on-surface-variant font-medium">Global Scale Alliance &amp; Talent Enablement</span>
+</div>
+<h2 class="font-display text-3xl sm:text-4xl text-on-surface font-bold tracking-tight">Partnership Highlights</h2>
+<p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1.5 leading-relaxed">
+  Strengthening the Google Cloud and Cognizant alliance through enterprise talent engineering.
+</p>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface border border-outline-variant/40 font-mono text-xs font-semibold shadow-sm transition-all cursor-pointer" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><span class="material-symbols-outlined text-[18px]">arrow_upward</span><span class="">Back to Landing Page</span></a>
+</div>
+</div>
+<!-- Feature Card: Alliance Expansion & Proof Points -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch"><div class="lg:col-span-7 bg-white p-8 rounded-3xl border border-outline-variant/50 shadow-sm flex flex-col justify-between relative overflow-hidden"><div class="absolute top-0 right-0 w-32 h-32 bg-google-blue/5 rounded-full blur-2xl pointer-events-none"></div><div class="space-y-6"><div class="flex items-center gap-2"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8F0FE] text-google-blue font-mono text-[11px] font-bold border border-google-blue/30"><span class="material-symbols-outlined text-[14px]">handshake</span>STRATEGIC ALLIANCE EXPANSION</span><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6F4EA] text-google-green font-mono text-[11px] font-bold border border-google-green/30"><span class="material-symbols-outlined text-[14px]">verified</span>VERIFIED PARTNER</span></div><h3 class="font-display text-2xl sm:text-3xl font-bold text-on-surface leading-snug">Cognizant and Google Cloud Expand Alliance to Accelerate Agentic Enterprise Transformation</h3><ul class="space-y-4 font-body text-sm sm:text-base text-on-surface-variant leading-relaxed"><li class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/30"><div class="w-8 h-8 rounded-lg bg-google-blue/10 text-google-blue flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-[18px]">groups</span></div><span class="italic font-medium text-on-surface">Initiative establishes new Gemini Frontier Capability Group, dedicating more than 18,000 engineers to help drive AI adoption for global enterprises.</span></li><li class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/30"><div class="w-8 h-8 rounded-lg bg-google-green/10 text-google-green flex items-center justify-center shrink-0 mt-0.5"><span class="material-symbols-outlined text-[18px]">school</span></div><span class="italic font-medium text-on-surface">More than 55,000 associates completed Build with Gemini, the largest Gemini partner workshop held to date,</span></li></ul></div><div class="pt-6 mt-4 border-t border-outline-variant/30 flex items-center justify-between font-mono text-xs"></div></div><div class="lg:col-span-5 flex flex-col justify-between gap-4"><div class="bg-white p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-center flex-1 relative overflow-hidden"><div class="flex items-center gap-2 mb-2 text-[#D93025]"><span class="material-symbols-outlined text-[20px]">format_quote</span><span class="font-mono text-[10px] font-bold uppercase tracking-wider text-outline">Executive Endorsement</span></div><p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed text-left font-medium pl-2 border-l-2 border-primary/40">“Establishing our dedicated Gemini Frontier Capability Group lets our best frontier engineering talent focus entirely on getting frontier AI into production for clients,” - <span class="font-semibold text-on-surface">Ravi Kumar S, CEO of Cognizant</span></p></div><div class="bg-white p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-center flex-1"><div class="flex items-center justify-between mb-2"><span class="font-mono text-[10px] font-bold text-google-blue uppercase tracking-wider flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">badge</span>TALENT ACCELERATOR</span><span class="font-mono text-xs font-bold text-google-green bg-[#E6F4EA] px-2 py-0.5 rounded">100K → 200K</span></div><p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed text-left font-medium">Cognizant is deploying Gemini to 100,000 associates this year—scaling to 200,000—while increasing platform certifications.</p></div><div class="bg-white p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-center flex-1"><div class="flex items-center justify-between mb-2"><span class="font-mono text-[10px] font-bold text-google-green uppercase tracking-wider flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">verified</span>FIELD VALIDATION</span><span class="font-mono text-xs font-bold text-google-blue bg-[#E8F0FE] px-2 py-0.5 rounded">-35% Costs</span></div><p class="font-body text-xs sm:text-sm text-on-surface leading-relaxed text-left"><strong class="text-on-surface font-semibold">Early Proof point :</strong> Cognizant’s integration of Gemini AI across the software development lifecycle helped a retailer boost developer productivity by 40%, cut time-to-market by 30%, and save 35% in costs.</p></div></div></div>
+</section>
+<!-- PILLAR 03: DELIVERY -->
+<section class="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-t border-outline-variant/30 pt-28" id="pillar-transformation"><!-- Section Header Bar with Navigation Back -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+  <div>
+    <div class="flex items-center gap-2 mb-2 font-mono text-xs">
+      <span class="px-2.5 py-0.5 rounded-full bg-[#E8F0FE] text-google-blue font-bold border border-primary/30">PILLAR 03</span>
+      <span class="text-on-surface-variant font-medium">Cloud Scale &amp; Agentic Solutions</span>
+    </div>
+    <h2 class="font-display text-3xl sm:text-4xl text-on-surface font-bold tracking-tight">Transformation Highlights</h2>
+    <p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1.5 leading-relaxed">Delivering measurable outcomes through robust engineering standards and autonomous telemetry.</p>
+  </div>
+  <div>
+    <a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface border border-outline-variant/40 font-mono text-xs font-semibold shadow-sm transition-all cursor-pointer" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+      <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+      <span class="">Back to Landing Page</span>
+    </a>
+  </div>
+</div>
+
+<!-- 2-Column Main Showcase Grid Matching IMAGE_4 -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+  <!-- Left / Main Wide Column (~70% / 8 cols) -->
+  <div class="lg:col-span-8 space-y-6"><!-- Top Card: GOVERNANCE & CTO LEADERSHIP -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-6 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div>
+          <span class="font-mono text-[10px] text-google-blue font-bold uppercase tracking-wider block">GOVERNANCE &amp; CTO LEADERSHIP</span>
+          <h4 class="font-display text-lg text-on-surface font-bold mt-0.5">Dedicated Google Cloud Transformation Office</h4>
+        </div>
+        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#E8F0FE] hover:bg-primary-container/60 text-google-blue font-mono text-xs font-semibold border border-primary/20 transition-colors shrink-0" onclick="openPrioritizationModal()">
+          <span class="">Priortization Framework</span>
+          <span class="material-symbols-outlined text-[14px]">launch</span>
+        </button>
+      </div>
+
+      <!-- Info Pills Row -->
+      <div class="flex flex-wrap items-center gap-3 mb-5 text-xs font-body">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
+          <span class="w-2 h-2 rounded-full bg-google-blue shrink-0"></span>
+          <span class=""><strong class="font-semibold">Leadership:</strong> Reinforced under Lakshmi Kumar Narayan (CTO Org)</span>
+        </div>
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 text-on-surface">
+          <span class="w-2 h-2 rounded-full bg-google-green shrink-0"></span>
+          <span class=""><strong class="font-semibold">Framework:</strong>&nbsp;5-Vector&nbsp; Prioritization Framework for AI Solutions</span>
+        </div>
+      </div>
+
+      <!-- 4-Grid Evaluation Vectors -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center"><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-blue/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-google-blue/10 text-google-blue flex items-center justify-center mb-1.5"><span class="material-symbols-outlined text-[16px]">payments</span></div><div class="font-display font-bold text-xs text-google-blue">Value ROI</div><div class="font-body text-[11px] text-on-surface-variant mt-0.5">Direct P&amp;L savings</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-green/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-google-green/10 text-google-green flex items-center justify-center mb-1.5"><span class="material-symbols-outlined text-[16px]">cloud_done</span></div><div class="font-display font-bold text-xs text-google-green">Tech Feasibility</div><div class="font-body text-[11px] text-on-surface-variant mt-0.5">GCP APIs &amp; access</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center mb-1.5"><span class="material-symbols-outlined text-[16px]">sync_alt</span></div><div class="font-display font-bold text-xs text-secondary">Cross-App</div><div class="font-body text-[11px] text-on-surface-variant mt-0.5">Multi-account reuse</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-tertiary/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center mb-1.5"><span class="material-symbols-outlined text-[16px]">pipeline</span></div><div class="font-display font-bold text-xs text-tertiary">GTM Potential</div><div class="font-body text-[11px] text-on-surface-variant mt-0.5">Co-sell pipeline</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 transition-colors col-span-2 sm:col-span-1 flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-primary-container/40 text-primary flex items-center justify-center mb-1.5"><span class="material-symbols-outlined text-[16px]">smart_toy</span></div><div class="font-display font-bold text-xs text-primary">Autonomous</div><div class="font-body text-[11px] text-on-surface-variant mt-0.5">Zero-touch operations</div></div></div>
+    </div>
+
+    <!-- Second Card: Header Banner Card for Scaling Agentic Solutions Across Cloud -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-6 md:p-8 shadow-sm">
+      <div class="flex items-center gap-2 text-google-blue font-mono text-xs font-semibold uppercase tracking-wider mb-3">
+        <span class="material-symbols-outlined text-[18px]">layers</span>
+        <span class="">TRANSFORMATION TENET · CLOUD SCALE</span>
+      </div>
+      <h3 class="font-display text-2xl sm:text-3xl text-on-surface font-bold tracking-tight leading-snug">
+        Scaling Agentic Solutions Across Cloud to Accelerate Speed to Deployment</h3>
+      <p class="font-body text-xs sm:text-sm text-on-surface-variant mt-2 leading-relaxed">
+        CTO-governed transformation transitioning point AI tools into a unified Google Cloud agentic orchestrator.
+      </p>
+    </div>
+
+    <!-- Bottom Card: E2E ARCHITECTURE LEVERAGING GEMINI ENTERPRISE (GE) -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-6 shadow-sm">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30 mb-4">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-google-blue text-[18px]">hub</span>
+          <span class="font-mono text-[10px] text-google-blue font-bold uppercase tracking-wider">E2E ARCHITECTURE LEVERAGING GEMINI ENTERPRISE (GE)</span>
+        </div>
+        <span class="font-mono text-xs text-on-surface-variant">Unified Orchestrator</span>
+      </div>
+
+      <!-- Digital Lead Orchestrator Banner Box -->
+      <div class="rounded-xl bg-[#E8F0FE]/60 border border-primary/30 p-3.5 text-center mb-4 cursor-pointer hover:bg-primary-container/40 transition-colors" onclick="openModal('modal-orchestrator')">
+        <div class="font-mono text-xs sm:text-sm font-bold text-google-blue flex items-center justify-center gap-2"><span class="w-2 h-2 rounded-full bg-google-blue animate-pulse shrink-0"></span><span class="text-center leading-relaxed">Transitioning to E2E architecture leveraging GE anchored in Digital Lead as unified orchestrator&nbsp;</span></div>
+      </div>
+
+      <!-- Sub-agents 5-card horizontal row -->
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 text-center font-mono"><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-blue/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-google-blue/10 text-google-blue flex items-center justify-center mb-1"><span class="material-symbols-outlined text-[16px]">psychology</span></div><div class="font-display font-bold text-xs text-on-surface">Digital SME</div><div class="text-[11px] text-on-surface-variant font-body mt-0.5">Expert Agent</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-green/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-google-green/10 text-google-green flex items-center justify-center mb-1"><span class="material-symbols-outlined text-[16px]">terminal</span></div><div class="font-display font-bold text-xs text-on-surface">CORE</div><div class="text-[11px] text-on-surface-variant font-body mt-0.5">Simulator</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-google-yellow/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-[#FEF7E0] text-[#B06000] flex items-center justify-center mb-1"><span class="material-symbols-outlined text-[16px]">account_tree</span></div><div class="font-display font-bold text-xs text-on-surface">Crado</div><div class="text-[11px] text-on-surface-variant font-body mt-0.5">Workflow</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-[#EA4335]/40 transition-colors flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-[#FCE8E6] text-[#D93025] flex items-center justify-center mb-1"><span class="material-symbols-outlined text-[16px]">campaign</span></div><div class="font-display font-bold text-xs text-on-surface">Accelerate</div><div class="text-[11px] text-on-surface-variant font-body mt-0.5">Outreach</div></div><div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 transition-colors col-span-2 sm:col-span-1 flex flex-col items-center"><div class="w-7 h-7 rounded-lg bg-primary-container/40 text-primary flex items-center justify-center mb-1"><span class="material-symbols-outlined text-[16px]">insights</span></div><div class="font-display font-bold text-xs text-on-surface">Elevate 360</div><div class="text-[11px] text-on-surface-variant font-body mt-0.5">Performance</div></div></div>
+    </div></div>
+
+  <!-- Right Sidebar Column (~30% / 4 cols) -->
+  <div class="lg:col-span-4 space-y-4">
+    <!-- Header Card with Verified Impact -->
+    
+
+    <!-- Metric Card 1: $10M+ -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('modal-sales')">
+      <div class="flex items-start justify-between">
+        <div class="font-display text-3xl font-bold text-google-blue">$10M+</div>
+        <span class="material-symbols-outlined text-google-green text-[22px]">attach_money</span>
+      </div>
+      <h5 class="font-display text-sm font-bold text-on-surface mt-2">EPP ROI Delivered</h5>
+      <p class="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
+        Delivered across 15+ AI solutions deployed within Google Cloud ecosystem.
+      </p>
+      
+    </div>
+
+    <!-- Metric Card 2: $10B+ -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openModal('modal-sales')">
+      <div class="flex items-start justify-between">
+        <div class="font-display text-3xl font-bold text-google-blue">$10B+</div>
+        <span class="material-symbols-outlined text-google-green text-[22px]">attach_money</span>
+      </div>
+      <h5 class="font-display text-sm font-bold text-on-surface mt-2">TCV Supported</h5>
+      <p class="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
+        Supported through RFP Accelerator &amp; PitchGen Enterprise Applications.</p>
+      <div class="pt-3 mt-3 border-t border-outline-variant/30 flex items-center justify-between font-mono text-xs">
+        
+        
+      </div>
+    </div>
+
+    <!-- Metric Card 3: 40% -->
+    <div class="bg-white rounded-2xl border border-outline-variant/40 p-5 shadow-sm hover:shadow-md transition-shadow cursor-pointer" onclick="openPillarScreen('pillar-01-transformation')">
+      <div class="flex items-start justify-between">
+        <div class="font-display text-3xl font-bold text-google-blue">40%</div>
+        <span class="material-symbols-outlined text-google-blue text-[22px]">schedule</span>
+      </div>
+      <h5 class="font-display text-sm font-bold text-on-surface mt-2">Engineering Spend Reduction Targeted</h5>
+      <p class="font-body text-xs text-on-surface-variant mt-1 leading-relaxed">
+        Co-creating solutions for engineering excellence through Google stack AI SDLC &amp; Dev Intelligence models.&nbsp;</p>
+      <div class="pt-3 mt-3 border-t border-outline-variant/30 flex items-center justify-between font-mono text-xs">
+        
+        
+      </div>
+    </div>
+  </div>
+</div></section>
+<!-- PILLAR 04: FUTURE -->
+<section class="py-20 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto border-t border-outline-variant/30 pt-28" id="pillar-future">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<div class="flex items-center gap-2 mb-2 font-mono text-xs">
+<span class="px-2.5 py-0.5 rounded-full bg-[#E8F0FE] text-primary font-bold border border-primary/30">PILLAR 04</span>
+<span class="text-on-surface-variant font-medium">2026–2030 Horizon Agenda &amp; Autonomous Ecosystems</span>
+</div>
+<h2 class="font-display text-3xl sm:text-4xl text-on-surface font-bold tracking-tight">Future Highlights</h2>
+<p class="font-body text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1.5 leading-relaxed">
+  Transitioning towards autonomous workflows and self-governing enterprise infrastructure.
+</p>
+</div>
+<div>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-surface-container-high hover:bg-primary hover:text-white text-on-surface border border-outline-variant/40 font-mono text-xs font-semibold shadow-sm transition-all cursor-pointer" data-path="overview" href="#overview" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><span class="material-symbols-outlined text-[18px]">arrow_upward</span><span class="">Back to Landing Page</span></a>
+</div>
+</div>
+<!-- 4 Strategic Priorities Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<div class="obsidian-glass-interactive p-5 rounded-2xl flex flex-col justify-between cursor-pointer" onclick="openPillarScreen('pillar-04-future')">
+<div>
+<span class="font-mono text-[10px] text-google-blue font-bold uppercase tracking-wider block mb-1">HORIZON 01</span>
+<h4 class="font-display text-base text-on-surface font-bold">Cloud Support</h4>
+<p class="font-body text-xs text-on-surface-variant mt-2 leading-relaxed">
+  Key focus on <strong class="text-on-surface font-semibold">E2E Autonomous Workflow</strong>. Intelligent case routing, automated diagnosis, and self-remediating ticket pipelines.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-google-blue font-semibold flex items-center justify-between">
+<span class="">Zero-Triage Routing</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+<div class="obsidian-glass-interactive p-5 rounded-2xl flex flex-col justify-between cursor-pointer" onclick="openPillarScreen('pillar-04-future')">
+<div>
+<span class="font-mono text-[10px] text-secondary font-bold uppercase tracking-wider block mb-1">HORIZON 02</span>
+<h4 class="font-display text-base text-on-surface font-bold">Hub Services</h4>
+<p class="font-body text-xs text-on-surface-variant mt-2 leading-relaxed">
+  Systematic <strong class="text-on-surface font-semibold">GE migration of current AI assets</strong>. Expanding multimodal document fidelity and cross-lingual models.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-secondary font-semibold flex items-center justify-between">
+<span class="">GE Migration Pipeline</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+<div class="obsidian-glass-interactive p-5 rounded-2xl flex flex-col justify-between cursor-pointer" onclick="openPillarScreen('pillar-04-future')">
+<div>
+<span class="font-mono text-[10px] text-tertiary font-bold uppercase tracking-wider block mb-1">HORIZON 03</span>
+<h4 class="font-display text-base text-on-surface font-bold">GTM Helpdesk</h4>
+<p class="font-body text-xs text-on-surface-variant mt-2 leading-relaxed">
+  Accelerating RFP response cycles with <strong class="text-on-surface font-semibold">E2E Agentic solutions</strong> that draft sovereign architecture topologies in real time.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-tertiary font-semibold flex items-center justify-between">
+<span class="">Speed-to-Contract</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+<div class="obsidian-glass-interactive p-5 rounded-2xl flex flex-col justify-between cursor-pointer" onclick="openPillarScreen('pillar-04-future')">
+<div>
+<span class="font-mono text-[10px] text-primary font-bold uppercase tracking-wider block mb-1">HORIZON 04</span>
+<h4 class="font-display text-base text-on-surface font-bold">Cross-Applicability</h4>
+<p class="font-body text-xs text-on-surface-variant mt-2 leading-relaxed">
+  Uncompromising focus on <strong class="text-on-surface font-semibold">reusable agent primitives</strong> that deploy cleanly across Healthcare, Retail, and Banking ecosystems.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-outline-variant/30 font-mono text-[11px] text-primary font-semibold flex items-center justify-between">
+<span class="">Horizontal Topology</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- 5-Step Autonomous Workflow Pipeline Ribbon -->
+<div class="bg-white p-6 rounded-3xl border border-outline-variant/50 shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-outline-variant/30 gap-2">
+<div>
+<span class="font-mono text-xs text-google-green font-semibold uppercase tracking-wider">Autonomous Lifecycle Engine</span>
+<h3 class="font-display text-lg text-on-surface font-bold mt-0.5">5-Step Autonomous Workflow Pipeline</h3>
+</div>
+<div class="font-mono text-xs text-on-surface-variant">Click any stage to simulate runtime telemetry</div>
+</div>
+<!-- Interactive Stage Steps -->
+<div class="grid grid-cols-1 sm:grid-cols-5 gap-3 font-mono text-xs"><div class="p-3.5 rounded-xl bg-surface-container-low border-2 border-google-blue p4-step-card cursor-pointer hover:bg-surface-container-high transition-all" id="p4-step-1" onclick="selectPipelineStage(1)"><div class="flex items-center justify-between mb-1"><span class="text-google-blue font-bold text-[10px]">01 / INTAKE</span><span class="material-symbols-outlined text-[16px] text-google-blue">input</span></div><span class="text-on-surface font-bold block mt-1">Input Intake</span><p class="text-on-surface-variant text-[11px] mt-1 font-body">Multimodal ingestion of telemetry &amp; tickets.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 p4-step-card cursor-pointer hover:bg-surface-container-high transition-all" id="p4-step-2" onclick="selectPipelineStage(2)"><div class="flex items-center justify-between mb-1"><span class="text-outline block text-[10px]">02 / COGNITION</span><span class="material-symbols-outlined text-[16px] text-google-green">psychology</span></div><span class="text-secondary font-bold block mt-1">AI Reasoning</span><p class="text-on-surface-variant text-[11px] mt-1 font-body">Gemini 1.5 Pro deep context analysis.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 p4-step-card cursor-pointer hover:bg-surface-container-high transition-all" id="p4-step-3" onclick="selectPipelineStage(3)"><div class="flex items-center justify-between mb-1"><span class="text-outline block text-[10px]">03 / ROUTING</span><span class="material-symbols-outlined text-[16px] text-primary">hub</span></div><span class="text-primary font-bold block mt-1">Orchestration</span><p class="text-on-surface-variant text-[11px] mt-1 font-body">Dynamic agent task allocation.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 p4-step-card cursor-pointer hover:bg-surface-container-high transition-all" id="p4-step-4" onclick="selectPipelineStage(4)"><div class="flex items-center justify-between mb-1"><span class="text-outline block text-[10px]">04 / DISPATCH</span><span class="material-symbols-outlined text-[16px] text-tertiary">terminal</span></div><span class="text-tertiary font-bold block mt-1">Execution</span><p class="text-on-surface-variant text-[11px] mt-1 font-body">Safe tool execution with policy guardrails.</p></div><div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 p4-step-card cursor-pointer hover:bg-surface-container-high transition-all" id="p4-step-5" onclick="selectPipelineStage(5)"><div class="flex items-center justify-between mb-1"><span class="text-outline block text-[10px]">05 / VERIFY</span><span class="material-symbols-outlined text-[16px] text-google-green">verified</span></div><span class="text-google-green font-bold block mt-1">Resolution</span><p class="text-on-surface-variant text-[11px] mt-1 font-body">Closed-loop verification &amp; audit telemetry.</p></div></div>
+<!-- Active Stage Live Detail Box -->
+<div class="mt-4 p-4 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono text-xs" id="stage-inspector-panel">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/60 text-primary flex items-center justify-center shrink-0" id="stage-icon">
+<span class="material-symbols-outlined text-[18px]">input</span>
+</div>
+<div>
+<div class="text-on-surface font-bold" id="stage-name-display">Stage 01: Input Intake (Streaming Mesh)</div>
+<div class="text-on-surface-variant text-[11px] font-body" id="stage-desc-display">Multimodal Ingestion of live incident telemetry, syslog streams, and customer helpdesk tickets into BigQuery vectors.</div>
+</div>
+</div>
+<div class="flex items-center gap-4 shrink-0 text-right">
+<div>
+<span class="text-[10px] text-on-surface-variant block uppercase font-medium">Benchmark</span>
+<span class="text-secondary font-bold" id="stage-metric-display">&lt; 85ms Streaming</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-white hover:bg-surface-container-high text-on-surface border border-outline-variant/40 text-[11px] transition-colors shadow-sm font-semibold" onclick="openPillarScreen('pillar-04-future')">Full Sim ↗</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ================= MODALS (M3 LIGHT) ================= -->
+<!-- 1. Central Diamond Executive Ecosystem Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-ecosystem" onclick="handleBackdropClick(event, 'modal-ecosystem')">
+<div class="w-full max-w-3xl bg-white rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl border border-outline-variant/60 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<span class="font-mono text-xs text-primary font-bold uppercase tracking-wider">Executive Alliance Ecosystem Hub</span>
+</div>
+<button class="p-1.5 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-ecosystem')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div>
+<h3 class="font-display text-2xl text-on-surface font-bold">Connected Intelligence • Scalable Innovation • Autonomous Enterprise</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant mt-1.5 leading-relaxed">
+  The complete 4-pillar architectural foundation uniting Google Cloud and Cognizant across Global Fortune 500 digital transformations. Quick-launch any dedicated pillar environment below:
+</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+<div class="p-4 rounded-2xl bg-surface-container-low border border-secondary/30 hover:border-secondary hover:bg-white transition-all cursor-pointer group shadow-sm" onclick="openPillarScreen('pillar-01-transformation')">
+<div class="flex items-center justify-between mb-2">
+<span class="text-secondary font-bold">PILLAR 01: TRANSFORMATION</span>
+<span class="material-symbols-outlined text-[16px] text-secondary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h4 class="font-display text-sm text-on-surface font-semibold mb-1">Architecture Modernization &amp; Governance</h4>
+<p class="font-body text-[11px] text-on-surface-variant">$10M+ EPP ROI Delivered • Digital Lead Orchestrator live.</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-low border border-primary/30 hover:border-primary hover:bg-white transition-all cursor-pointer group shadow-sm" onclick="openPillarScreen('pillar-02-partnership')">
+<div class="flex items-center justify-between mb-2">
+<span class="text-primary font-bold">PILLAR 02: PARTNERSHIP</span>
+<span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h4 class="font-display text-sm text-on-surface font-semibold mb-1">Scale &amp; Talent Enablement</h4>
+<p class="font-body text-[11px] text-on-surface-variant">55,000+ Build with Gemini grads • 18,000 Frontier AI Engineers.</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-low border border-tertiary/30 hover:border-tertiary hover:bg-white transition-all cursor-pointer group shadow-sm" onclick="openPillarScreen('pillar-03-delivery')">
+<div class="flex items-center justify-between mb-2">
+<span class="text-tertiary font-bold">PILLAR 03: DELIVERY</span>
+<span class="material-symbols-outlined text-[16px] text-tertiary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h4 class="font-display text-sm text-on-surface font-semibold mb-1">Operational Rigor &amp; Execution</h4>
+<p class="font-body text-[11px] text-on-surface-variant">99.98% Sovereign SLA • MTTR &lt;4.2m with autonomous SRE gates.</p>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-low border border-google-blue/30 hover:border-google-blue hover:bg-white transition-all cursor-pointer group shadow-sm" onclick="openPillarScreen('pillar-04-future')">
+<div class="flex items-center justify-between mb-2">
+<span class="text-google-blue font-bold">PILLAR 04: FUTURE</span>
+<span class="material-symbols-outlined text-[16px] text-google-blue group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h4 class="font-display text-sm text-on-surface font-semibold mb-1">Autonomous Workflows (2026-30)</h4>
+<p class="font-body text-[11px] text-on-surface-variant">Self-healing multi-agent pipelines &amp; reusable enterprise blueprints.</p>
+</div>
+</div>
+<div class="pt-2 flex justify-between items-center border-t border-outline-variant/30">
+<button class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-ecosystem')">Close Hub</button>
+<button class="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white font-body text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5" onclick="openModal('modal-connect-council')">
+<span class="">Schedule Alliance Briefing</span>
+<span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 2. Briefing Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-briefing" onclick="handleBackdropClick(event, 'modal-briefing')">
+<div class="w-full max-w-2xl bg-white rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl border border-outline-variant/50 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-briefing')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<h3 class="font-display text-2xl text-on-surface font-bold">Google Cloud × Cognizant Strategic Synthesis</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+  Alliance portfolio overview spanning modern architecture, Gemini talent scalability, operational execution telemetry, and autonomous horizons across the 4 strategic pillars.
+</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono text-xs">
+<a class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-secondary transition-colors block cursor-pointer" data-path="pillar-01-transformation" href="#" onclick="openPillarScreen('pillar-01-transformation')">
+<span class="text-secondary font-bold block">Pillar 01 Screen ↗</span>
+<span class="text-on-surface-variant text-[11px]">Transformation Engine</span>
+</a>
+<a class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-primary transition-colors block cursor-pointer" data-path="pillar-02-partnership" href="#" onclick="openPillarScreen('pillar-02-partnership')">
+<span class="text-primary font-bold block">Pillar 02 Screen ↗</span>
+<span class="text-on-surface-variant text-[11px]">Partnership &amp; Scale</span>
+</a>
+<a class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-tertiary transition-colors block cursor-pointer" data-path="pillar-03-delivery" href="#" onclick="openPillarScreen('pillar-03-delivery')">
+<span class="text-tertiary font-bold block">Pillar 03 Screen ↗</span>
+<span class="text-on-surface-variant text-[11px]">Delivery &amp; Rigor</span>
+</a>
+<a class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-google-blue transition-colors block cursor-pointer" data-path="pillar-04-future" href="#" onclick="openPillarScreen('pillar-04-future')">
+<span class="text-google-blue font-bold block">Pillar 04 Screen ↗</span>
+<span class="text-on-surface-variant text-[11px]">Autonomous Future</span>
+</a>
+</div>
+<div class="pt-2 flex justify-end">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-briefing')">Dismiss Dossier</button>
+</div>
+</div>
+</div>
+<!-- 3. Autonomous POV Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-autonomous" onclick="handleBackdropClick(event, 'modal-autonomous')">
+<div class="w-full max-w-2xl bg-white rounded-3xl p-6 md:p-8 space-y-5 shadow-2xl border border-secondary/40 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-secondary font-bold uppercase tracking-wider">Autonomous POV Blueprint</span>
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-autonomous')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div>
+<h3 class="font-display text-2xl text-on-surface font-bold">3-Tier Enterprise Autonomy Roadmap</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant mt-1 leading-relaxed">
+  Enterprises are actively shifting from simple copilot assistance to multi-agent swarms. The Google Cloud × Cognizant framework defines three operating maturity tiers:
+</p>
+</div>
+<!-- Interactive Tier Buttons -->
+<div class="flex items-center gap-2 p-1.5 rounded-xl bg-surface-container-low border border-outline-variant/40 font-mono text-xs">
+<button class="px-3 py-1.5 rounded-lg tier-tab text-on-surface-variant hover:text-on-surface" id="tab-tier-1" onclick="switchAutonomyTier(1)">Tier 1: Assisted</button>
+<button class="px-3 py-1.5 rounded-lg tier-tab text-on-surface-variant hover:text-on-surface" id="tab-tier-2" onclick="switchAutonomyTier(2)">Tier 2: Semi-Autonomous</button>
+<button class="px-3 py-1.5 rounded-lg tier-tab bg-secondary text-white font-bold active-tier" id="tab-tier-3" onclick="switchAutonomyTier(3)">Tier 3: Autonomous</button>
+</div>
+<!-- Dynamic Tier Card -->
+<div class="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/40 space-y-3" id="tier-content-box">
+<div class="flex items-center justify-between">
+<span class="text-secondary font-bold font-mono text-xs" id="tier-badge">Tier 3: Closed-Loop Self-Healing Agent Mesh</span>
+<span class="text-[11px] font-mono text-on-surface-variant font-medium" id="tier-sla">Zero Human Delay SLA</span>
+</div>
+<p class="font-body text-xs text-on-surface leading-relaxed" id="tier-description">
+  Autonomous multi-agent meshes proactively ingest telemetry, cross-check policies via Gemini 1.5 Pro, dry-run remediation in isolated sandboxes, and commit live self-healing operations without triage drag.
+</p>
+<div class="grid grid-cols-2 gap-2 pt-2 font-mono text-[11px]">
+<div class="p-2.5 rounded bg-white border border-outline-variant/30">
+<span class="text-on-surface-variant block">Governance Mode</span>
+<span class="text-on-surface font-semibold" id="tier-gov">Deterministic Cloud Guardrails</span>
+</div>
+<div class="p-2.5 rounded bg-white border border-outline-variant/30">
+<span class="text-on-surface-variant block">Incident MTTR</span>
+<span class="text-secondary font-semibold" id="tier-speed">&lt; 14 Seconds</span>
+</div>
+</div>
+</div>
+<div class="pt-2 flex justify-between items-center">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-autonomous')">Dismiss</button>
+<button class="px-4 py-2 rounded-xl bg-secondary hover:bg-secondary/90 text-white font-body text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5" onclick="openPillarScreen('pillar-04-future')">
+<span class="">Open Pillar 04 Screen</span>
+<span class="material-symbols-outlined text-[15px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 4. Sales Transformation Modal -->
+
+<!-- 5. Managed Services Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-managed-services" onclick="handleBackdropClick(event, 'modal-managed-services')">
+<div class="w-full max-w-xl bg-white rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl border border-tertiary/40 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-tertiary font-bold uppercase tracking-wider">Managed Services Telemetry</span>
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-managed-services')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<h3 class="font-display text-2xl text-on-surface font-bold">Cognizant Neuro™ SRE Framework</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+  Transitioning enterprise managed services from reactive ticket resolution to proactive, cognitive self-healing infrastructure. Joint services incorporate predictive anomaly detection and autonomous runbook remediation.
+</p>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 font-mono text-xs space-y-2">
+<div class="flex justify-between py-1.5 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Availability SLA Guarantee</span>
+<span class="text-secondary font-bold">99.98% Sovereign</span>
+</div>
+<div class="flex justify-between py-1.5 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Automated MTTR</span>
+<span class="text-primary font-bold">&lt; 4.2 Minutes (Auto-Healed)</span>
+</div>
+<div class="flex justify-between py-1.5">
+<span class="text-on-surface-variant">Continuous Compliance</span>
+<span class="text-tertiary font-bold">ISO 27001 &amp; SOC2 Type II</span>
+</div>
+</div>
+<div class="pt-2 flex justify-between items-center">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-managed-services')">Dismiss</button>
+<button class="px-4 py-2 rounded-xl bg-tertiary hover:bg-tertiary/90 text-white font-body text-xs font-semibold shadow-sm transition-all" onclick="openPillarScreen('pillar-03-delivery')">Open Pillar 03 Screen</button>
+</div>
+</div>
+</div>
+<!-- 6. Connect Council Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-connect-council" onclick="handleBackdropClick(event, 'modal-connect-council')">
+<div class="w-full max-w-xl bg-white rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl border border-primary/40 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-primary font-bold uppercase tracking-wider">Executive Alliance Council</span>
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-connect-council')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<h3 class="font-display text-2xl text-on-surface font-bold">Schedule Strategic Alignment Session</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+  Connect directly with Google Cloud Managing Directors and Cognizant Enterprise Fellows to map your organization's Agentic AI transformation trajectory.
+</p>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 font-mono text-xs space-y-2">
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Primary Hub:</span>
+<span class="text-on-surface font-medium">Google San Jose &amp; Cognizant Global Labs</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Turnaround SLA:</span>
+<span class="text-secondary font-medium">Within 48 Business Hours</span>
+</div>
+</div>
+<div class="pt-2 flex justify-end gap-3">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-connect-council')">Cancel</button>
+<button class="px-5 py-2 rounded-xl bg-primary hover:bg-primary/90 text-white font-body text-xs font-semibold shadow-sm transition-all" onclick="alert('Consultation request registered. An Alliance Director will contact you within 48 hours.'); closeModal('modal-connect-council');">Confirm Consultation</button>
+</div>
+</div>
+</div>
+<!-- 7. Interactive Orchestrator Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-orchestrator" onclick="handleBackdropClick(event, 'modal-orchestrator')">
+<div class="w-full max-w-xl bg-white rounded-3xl p-6 md:p-8 space-y-4 shadow-2xl border border-secondary/40 max-h-[90vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<span class="font-mono text-xs text-secondary font-bold uppercase tracking-wider">Digital Lead Telemetry Stack</span>
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" onclick="closeModal('modal-orchestrator')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<h3 class="font-display text-2xl text-on-surface font-bold">Digital Lead Orchestrator</h3>
+<p class="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed">Transitioning to E2E architecture leveraging GE anchored in Digital Lead as unified orchestrator to seamlessly auto connect point solutions (Digital SME, CORE, Crado, Accelerate, Elevate 360).</p>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 font-mono text-xs space-y-2">
+<div class="flex justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Mesh Concurrency</span>
+<span class="text-secondary font-bold">12,480 req/s Active</span>
+</div>
+<div class="flex justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Auto-Sync Speed</span>
+<span class="text-on-surface font-bold">12.4 ms</span>
+</div>
+<div class="flex justify-between py-1 border-b border-outline-variant/30">
+<span class="text-on-surface-variant">Guardrails Active</span>
+<span class="text-primary font-bold">Deterministic</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-on-surface-variant">Underlying Model</span>
+<span class="text-tertiary font-bold">Gemini 1.5 Pro</span>
+</div>
+</div>
+<div class="pt-2 flex justify-between items-center">
+<button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closeModal('modal-orchestrator')">Dismiss</button>
+<button class="px-4 py-2 rounded-xl bg-secondary text-white font-body text-xs font-semibold shadow-sm transition-all" onclick="openPillarScreen('pillar-01-transformation')">Open Pillar 01 View</button>
+</div>
+</div>
+</div>
+<!-- ================= 5. FOOTER (M3 LIGHT) ================= -->
+<footer class="w-full border-t border-outline-variant/40 bg-white py-12 px-4 sm:px-6 lg:px-12 mt-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="text-on-surface font-display font-semibold text-sm">Google Cloud × Cognizant</span>
+<span class="text-outline-variant">•</span>
+
+</div>
+<div class="flex items-center gap-5">
+
+
+</div>
+</div>
+</footer>
+<!-- SCRIPT SUITE -->
+<script>
+    // 1. Modal open/close & clickaway logic
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+    function handleBackdropClick(event, id) {
+      if (event.target.id === id) {
+        closeModal(id);
+      }
+    }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        ['modal-ecosystem', 'modal-briefing', 'modal-autonomous', 'modal-sales', 'modal-managed-services', 'modal-connect-council', 'modal-orchestrator'].forEach(closeModal);
+      }
+    });
+
+    // 2. Direct Pillar Navigation handler linking smoothly to the dedicated sections
+    function openPillarScreen(path) {
+      ['modal-ecosystem', 'modal-briefing', 'modal-autonomous', 'modal-sales', 'modal-managed-services', 'modal-connect-council', 'modal-orchestrator'].forEach(closeModal);
+      
+      const mapping = {
+        'pillar-01-transformation': 'pillar-01',
+        'pillar-02-partnership': 'pillar-02',
+        'pillar-03-delivery': 'pillar-03',
+        'pillar-04-future': 'pillar-04',
+        'overview': 'overview'
+      };
+
+      const sectionId = mapping[path] || path;
+      const targetEl = document.getElementById(sectionId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // 3. Pillar 01 Prioritization Quadrants Interactivity
+    const p1QuadData = {
+      value: {
+        title: "Score Threshold: > 85",
+        status: "Gate Approved (98.4/100)",
+        color: "text-secondary"
+      },
+      feasibility: {
+        title: "Score Threshold: > 80",
+        status: "Gate Approved (91.2/100)",
+        color: "text-secondary"
+      },
+      cross: {
+        title: "Score Threshold: > 75",
+        status: "Gate Approved (89.6/100)",
+        color: "text-secondary"
+      },
+      gtm: {
+        title: "Score Threshold: > 88",
+        status: "Gate Approved (95.0/100)",
+        color: "text-secondary"
+      }
+    };
+
+    function setP1Quadrant(type) {
+      document.querySelectorAll('.p1-quad-btn').forEach(btn => {
+        btn.classList.remove('border-primary', 'bg-primary-container/30');
+      });
+      event.currentTarget.classList.add('border-primary', 'bg-primary-container/30');
+      
+      const item = p1QuadData[type];
+      if (item) {
+        document.getElementById('p1-quad-title').innerText = item.title;
+        const statusEl = document.getElementById('p1-quad-status');
+        statusEl.innerText = item.status;
+        statusEl.className = `${item.color} font-semibold`;
+      }
+    }
+
+    // 4. Pillar 03 Delivery Highlights Telemetry Tabs
+    const p3TelemetryModes = {
+      agentic: {
+        title: "AI-Powered Enterprise Solutions Execution",
+        desc: "High-velocity pipeline orchestrating multiple Gemini 1.5 Flash and Pro instances to automate document parsing, governance policy validation, and synthesis.",
+        mttr: "MTTR: < 4.2 Minutes (Auto-Healed)",
+        gate: "Zero-Defect QA Gate Active",
+        logs: [
+          { icon: "smart_toy", color: "text-secondary", text: "[AGENT_INTAKE] 14,290 enterprise records processed • batch latency: 124ms" },
+          { icon: "psychology", color: "text-primary", text: "[GEMINI_REASONING] Multi-model consensus reached (confidence: 99.82%)" },
+          { icon: "task_alt", color: "text-tertiary", text: "[AUTO_EXECUTE] Cloud SQL sovereign ledger committed with zero manual touch" }
+        ]
+      },
+      cloud: {
+        title: "Multi-Region GKE Autopilot & BigQuery Mesh",
+        desc: "High-concurrency cluster telemetry auto-scaling across Google Cloud europe-west1 and us-central1 with zero queue contention and 42PB throughput.",
+        mttr: "Availability Index: 99.995%",
+        gate: "Multi-Region Active Sync",
+        logs: [
+          { icon: "cloud_sync", color: "text-secondary", text: "[GKE_AUTOSCALE] Horizontal Pod Autoscaler triggered: scaled 48 -> 112 replicas." },
+          { icon: "dataset", color: "text-primary", text: "[BIGQUERY_MESH] Partition replication synchronized across europe-west1 & us-central1." },
+          { icon: "speed", color: "text-tertiary", text: "[IOPS_CHECK] Distributed cluster operating at 1.8M IOPS with zero drop." }
+        ]
+      },
+      sdlc: {
+        title: "Cognizant Neuro™ CI/CD Autonomous Verification",
+        desc: "Automated synthetic QA agent suites run 250,000+ deterministic scenario tests prior to production deployments, eliminating regression defects.",
+        mttr: "Defect Escape Rate: 0.00%",
+        gate: "Q1 Excellence Stamp Certified",
+        logs: [
+          { icon: "terminal", color: "text-tertiary", text: "[SYNTHETIC_QA] Cognizant Neuro™ spawned 4,200 adversarial test fixtures." },
+          { icon: "security", color: "text-secondary", text: "[REGRESSION_ZERO] Zero regression vectors detected. Security policy score: 100%." },
+          { icon: "verified", color: "text-primary", text: "[AUTO_DEPLOY] Blue-Green cutover complete across 12 high-velocity pods." }
+        ]
+      }
+    };
+
+    function switchDeliveryTelemetry(mode) {
+      document.querySelectorAll('.p3-tab').forEach(b => {
+        b.className = "px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface p3-tab";
+      });
+      const activeBtn = document.getElementById('p3-tab-' + mode);
+      if (activeBtn) {
+        activeBtn.className = "px-2.5 py-1 rounded bg-primary text-white font-medium p3-tab";
+      }
+
+      const data = p3TelemetryModes[mode];
+      if (data) {
+        document.getElementById('delivery-console-title').innerText = data.title;
+        document.getElementById('delivery-console-desc').innerText = data.desc;
+        document.getElementById('delivery-mttr').innerText = data.mttr;
+        document.getElementById('delivery-gate').innerText = data.gate;
+
+        const streamEl = document.getElementById('delivery-log-stream');
+        streamEl.innerHTML = data.logs.map(l => `
+          <div class="${l.color} flex items-start gap-2 font-medium">
+            <span class="material-symbols-outlined text-[16px] shrink-0 mt-0.5">${l.icon}</span>
+            <span>${l.text}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    // 5. Pillar 04 5-Step Pipeline Stage Interactive Inspector
+    const p4Stages = {
+      1: {
+        name: "Stage 01: Input Intake (Streaming Mesh)",
+        desc: "Multimodal Ingestion of live incident telemetry, syslog streams, and customer helpdesk tickets into BigQuery vectors.",
+        metric: "< 85ms Streaming",
+        icon: "input"
+      },
+      2: {
+        name: "Stage 02: AI Reasoning (Cognition)",
+        desc: "Gemini 1.5 Pro performs contextual root-cause extraction, policy cross-checks, and severity classification with 99.8% precision.",
+        metric: "Self-Reflective CoT",
+        icon: "psychology"
+      },
+      3: {
+        name: "Stage 03: Orchestration (Task Mesh)",
+        desc: "Digital Lead Mesh handoff assigns atomic task units to specialized domain micro-agents across Cognizant Neuro™ pipelines.",
+        metric: "64 Parallel Workers",
+        icon: "hub"
+      },
+      4: {
+        name: "Stage 04: Execution (Safe Sandbox)",
+        desc: "Safe sandbox runtime dry-run, canary rollout validation, and automated rollback triggers for infrastructure configurations.",
+        metric: "gVisor Isolated",
+        icon: "terminal"
+      },
+      5: {
+        name: "Stage 05: Resolution (Audit Verified)",
+        desc: "Immutable audit logging to Cloud Logging, synthesized client notification dispatch, and automated closure ticket reconciliation.",
+        metric: "Signed Cryptographic",
+        icon: "verified"
+      }
+    };
+
+    function selectPipelineStage(idx) {
+      document.querySelectorAll('.p4-step-card').forEach(c => {
+        c.classList.remove('border-2', 'border-google-blue', 'border-secondary', 'border-primary', 'border-tertiary', 'border-google-green');
+        c.classList.add('border', 'border-outline-variant/40');
+      });
+
+      const current = document.getElementById('p4-step-' + idx);
+      if (current) {
+        current.classList.remove('border-outline-variant/40');
+        current.classList.add('border-2', 'border-google-blue');
+      }
+
+      const stg = p4Stages[idx];
+      if (stg) {
+        document.getElementById('stage-name-display').innerText = stg.name;
+        document.getElementById('stage-desc-display').innerText = stg.desc;
+        document.getElementById('stage-metric-display').innerText = stg.metric;
+        document.getElementById('stage-icon').innerHTML = `<span class="material-symbols-outlined text-[18px]">${stg.icon}</span>`;
+      }
+    }
+
+    // 6. Autonomous POV 3-Tier Tab Switcher
+    const tierData = {
+      1: {
+        badge: "Tier 1: Assisted (Human-in-the-Loop Operations)",
+        sla: "Requires Manual Operator Approval",
+        desc: "AI drafts recommendations, summarizes syslogs, and suggests probable root causes with interactive prompt checklists for L2 analysts.",
+        gov: "Human Approval Gate Required",
+        speed: "~15m Processing Window"
+      },
+      2: {
+        badge: "Tier 2: Semi-Autonomous (Policy-Gated Flow)",
+        sla: "1-Click Human Approval for Live Mutation",
+        desc: "Fine-tuned Gemini models match incidents against approved runbooks with confidence scoring, dry-run canary staging, and request 1-click token validation.",
+        gov: "Dynamic Token Guard Active",
+        speed: "< 2.4s Automated Hook"
+      },
+      3: {
+        badge: "Tier 3: Closed-Loop Self-Healing Agent Mesh",
+        sla: "Zero Human Delay SLA Active",
+        desc: "Autonomous multi-agent meshes proactively ingest telemetry, cross-check policies via Gemini 1.5 Pro, dry-run remediation in isolated sandboxes, and commit live self-healing operations without triage drag.",
+        gov: "Deterministic Cloud Guardrails",
+        speed: "< 14 Seconds"
+      }
+    };
+
+    function switchAutonomyTier(tierNum) {
+      document.querySelectorAll('.tier-tab').forEach(t => {
+        t.className = "px-3 py-1.5 rounded-lg tier-tab text-on-surface-variant hover:text-on-surface";
+      });
+      const active = document.getElementById('tab-tier-' + tierNum);
+      if (active) {
+        active.className = "px-3 py-1.5 rounded-lg tier-tab bg-secondary text-white font-bold active-tier";
+      }
+
+      const t = tierData[tierNum];
+      if (t) {
+        document.getElementById('tier-badge').innerText = t.badge;
+        document.getElementById('tier-sla').innerText = t.sla;
+        document.getElementById('tier-description').innerText = t.desc;
+        document.getElementById('tier-gov').innerText = t.gov;
+        document.getElementById('tier-speed').innerText = t.speed;
+      }
+    }
+  </script>
+<button class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-5 py-3 rounded-full bg-primary text-white font-mono text-xs font-semibold shadow-lg border border-primary/20 hover:scale-105 hover:bg-primary/90 transition-all cursor-pointer" data-path="overview" id="btn-back-to-landing" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><span class="material-symbols-outlined text-[20px]">arrow_upward</span><span class="">Back to Landing Page</span></button>
+
+
+<script id="radar-dial-script" class="">const quadrantSequence = ['hub', 'transformation', 'partnership', 'delivery', 'future']; let currentQuadrantIdx = 0; function selectRadarQuadrant(name) { const sectionMap = { future: 'pillar-04', transformation: 'pillar-01', partnership: 'pillar-02', delivery: 'pillar-03', hub: 'overview' }; const counterMap = { hub: 1, transformation: 2, partnership: 3, delivery: 4, future: 5 }; const counterEl = document.getElementById('slide-counter-index'); if (counterEl && counterMap[name]) { counterEl.innerText = counterMap[name]; } const hubLabel = document.getElementById('hub-state-label'); if (hubLabel) { hubLabel.innerText = name === 'hub' ? 'Select Quadrant' : name.toUpperCase(); } document.querySelectorAll('.dial-quadrant-card').forEach(q => { q.classList.remove('bg-google-green/10', 'bg-google-blue/10', 'bg-[#FCE8E6]', 'bg-google-yellow/10', 'scale-[0.99]'); }); if (name === 'future') { const el = document.getElementById('quadrant-future'); if (el) el.classList.add('bg-google-green/10'); } else if (name === 'transformation') { const el = document.getElementById('quadrant-transformation'); if (el) el.classList.add('bg-google-blue/10'); } else if (name === 'partnership') { const el = document.getElementById('quadrant-partnership'); if (el) el.classList.add('bg-[#FCE8E6]'); } else if (name === 'delivery') { const el = document.getElementById('quadrant-delivery'); if (el) el.classList.add('bg-google-yellow/10'); } document.querySelectorAll('.dock-pill-btn').forEach(btn => { btn.className = 'px-3 py-1.5 rounded-full hover:bg-surface-container-low text-on-surface-variant flex items-center gap-1.5 transition-all dock-pill-btn'; }); const activeBtn = document.getElementById('dock-btn-' + name); if (activeBtn) { activeBtn.className = 'px-3.5 py-1.5 rounded-full bg-on-surface text-white font-medium flex items-center gap-1.5 shadow-sm transition-all dock-pill-btn'; } currentQuadrantIdx = quadrantSequence.indexOf(name); if (currentQuadrantIdx === -1) currentQuadrantIdx = 0; if (name !== 'hub' && sectionMap[name]) { const targetEl = document.getElementById(sectionMap[name]); if (targetEl) { setTimeout(() => { targetEl.scrollIntoView({ behavior: 'smooth' }); }, 150); } } } function cycleQuadrant(delta) { currentQuadrantIdx = (currentQuadrantIdx + delta + quadrantSequence.length) % quadrantSequence.length; selectRadarQuadrant(quadrantSequence[currentQuadrantIdx]); }</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Prioritization Framework Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm hidden" id="modal-prioritization-framework" onclick="handleBackdropClick(event, 'modal-prioritization-framework')">
+  <div class="w-full max-w-5xl bg-surface-container-low rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl border border-outline-variant/60 max-h-[92vh] overflow-y-auto text-left">
+    <!-- Header Box with Dark Google Cloud Header banner style matching IMAGE_4 -->
+    <div class="bg-[#002855] text-white p-6 sm:p-7 rounded-2xl relative overflow-hidden">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-white mb-2">
+            One weighted, risk-adjusted score decides which AI solutions we fund
+          </h2>
+          <p class="font-body text-xs sm:text-sm text-[#D3E3FD] leading-relaxed">
+            GCP Support AI Solution Prioritization Framework: how every solution is scored, risk-adjusted and tiered
+          </p>
+        </div>
+        <button class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors shrink-0" onclick="closePrioritizationModal()">
+          <span class="material-symbols-outlined text-[22px]">close</span>
+        </button>
+      </div>
+      <div class="h-1 bg-google-blue w-20 mt-4 rounded-full"></div>
+    </div>
+
+    <!-- 3-Column Evaluation Matrix from IMAGE_4 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <!-- Column 1: 1. Score four parameters (1-5) (5 cols) -->
+      <div class="lg:col-span-5 space-y-3">
+        <div class="font-mono text-xs sm:text-sm font-bold text-google-blue mb-1">
+          1. Score four parameters (1–5)
+        </div>
+        <!-- Row 1: 30% Value scale / ROI -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#002855] text-white flex items-center justify-center font-display text-2xl font-bold shrink-0">
+            30%
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-center">
+            <div class="font-display text-sm font-bold text-on-surface">Value scale / ROI</div>
+            <div class="font-body text-xs text-on-surface-variant mt-0.5">Business value and payback speed</div>
+          </div>
+        </div>
+        <!-- Row 2: 25% Autonomous Potential -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#002855] text-white flex items-center justify-center font-display text-2xl font-bold shrink-0">
+            25%
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-center">
+            <div class="font-display text-sm font-bold text-on-surface">Autonomous Potential</div>
+            <div class="font-body text-xs text-on-surface-variant mt-0.5">Share of workflow AI does end-to-end</div>
+          </div>
+        </div>
+        <!-- Row 3: 25% Development Feasibility & Access -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#002855] text-white flex items-center justify-center font-display text-2xl font-bold shrink-0">
+            25%
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-center">
+            <div class="font-display text-sm font-bold text-on-surface">Development Feasibility &amp; Access</div>
+            <div class="font-body text-xs text-on-surface-variant mt-0.5">Tech readiness, data access, approvals</div>
+          </div>
+        </div>
+        <!-- Row 4: 20% Cross-applicability -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#002855] text-white flex items-center justify-center font-display text-2xl font-bold shrink-0">
+            20%
+          </div>
+          <div class="p-3.5 flex-1 flex flex-col justify-center">
+            <div class="font-display text-sm font-bold text-on-surface">Cross-applicability</div>
+            <div class="font-body text-xs text-on-surface-variant mt-0.5">Reuse across queues, products, LOBs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: 2. Adjust for risk (3 cols) -->
+      <div class="lg:col-span-3 space-y-3">
+        <div class="font-mono text-xs sm:text-sm font-bold text-google-blue mb-1">
+          2. Adjust for risk
+        </div>
+        <!-- Box 1: Priority Score (/100) -->
+        <div class="p-3.5 rounded-xl bg-[#E8F0FE] border border-google-blue/30 text-center flex flex-col justify-center min-h-[68px]">
+          <div class="font-display text-sm font-bold text-[#002855]">Priority Score (/100)</div>
+          <div class="font-body text-xs text-on-surface-variant mt-0.5">Weighted score ÷ 5 × 100</div>
+        </div>
+        <!-- Box 2: × Confidence in the scores -->
+        <div class="p-3.5 rounded-xl bg-[#E8F0FE] border border-google-blue/30 text-center flex flex-col justify-center min-h-[68px]">
+          <div class="font-display text-sm font-bold text-[#002855]">× Confidence in the scores</div>
+          <div class="font-body text-xs text-on-surface-variant mt-0.5">High 1.0 · Medium 0.9 · Low 0.8</div>
+        </div>
+        <!-- Box 3: × Go-to-market probability -->
+        <div class="p-3.5 rounded-xl bg-[#E8F0FE] border border-google-blue/30 text-center flex flex-col justify-center min-h-[68px]">
+          <div class="font-display text-sm font-bold text-[#002855]">× Go-to-market probability</div>
+          <div class="font-body text-xs text-on-surface-variant mt-0.5">High 1.0 · Medium 0.9 · Low 0.8</div>
+        </div>
+        <!-- Box 4: = Final Adjusted Score -->
+        <div class="p-3.5 rounded-xl bg-google-blue text-white text-center flex flex-col justify-center min-h-[68px] shadow-sm">
+          <div class="font-display text-sm font-bold text-white">= Final Adjusted Score</div>
+          <div class="font-body text-xs text-white/90 mt-0.5">Sets each solution’s tier and rank</div>
+        </div>
+      </div>
+
+      <!-- Column 3: 3. Assign tier and action (4 cols) -->
+      <div class="lg:col-span-4 space-y-3">
+        <div class="font-mono text-xs sm:text-sm font-bold text-google-blue mb-1">
+          3. Assign tier and action
+        </div>
+        <!-- Tier P1 >= 75: Fund and staff now -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-google-green text-white flex flex-col items-center justify-center font-display font-bold shrink-0 py-2.5">
+            <div class="text-lg leading-none">P1</div>
+            <div class="text-xs mt-0.5">≥ 75</div>
+          </div>
+          <div class="p-3.5 flex-1 flex items-center">
+            <span class="font-display text-sm font-bold text-on-surface">Fund and staff now</span>
+          </div>
+        </div>
+        <!-- Tier P2 >= 60: Next-quarter pipeline -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#FBBC05] text-white flex flex-col items-center justify-center font-display font-bold shrink-0 py-2.5">
+            <div class="text-lg leading-none">P2</div>
+            <div class="text-xs mt-0.5">≥ 60</div>
+          </div>
+          <div class="p-3.5 flex-1 flex items-center">
+            <span class="font-display text-sm font-bold text-on-surface">Next-quarter pipeline</span>
+          </div>
+        </div>
+        <!-- Tier P3 >= 45: Backlog, review quarterly -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#E37400] text-white flex flex-col items-center justify-center font-display font-bold shrink-0 py-2.5">
+            <div class="text-lg leading-none">P3</div>
+            <div class="text-xs mt-0.5">≥ 45</div>
+          </div>
+          <div class="p-3.5 flex-1 flex items-center">
+            <span class="font-display text-sm font-bold text-on-surface">Backlog, review quarterly</span>
+          </div>
+        </div>
+        <!-- Tier Park < 45: Parked/Blocked -->
+        <div class="flex items-stretch rounded-xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+          <div class="w-20 bg-[#EA4335] text-white flex flex-col items-center justify-center font-display font-bold shrink-0 py-2.5">
+            <div class="text-lg leading-none">Park</div>
+            <div class="text-xs mt-0.5">&lt; 45</div>
+          </div>
+          <div class="p-3.5 flex-1 flex items-center">
+            <span class="font-display text-sm font-bold text-on-surface">Parked/Blocked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Execution Archetypes Bottom Section from IMAGE_4 -->
+    <div class="pt-4 border-t border-outline-variant/40">
+      <div class="font-mono text-xs sm:text-sm font-bold text-google-blue mb-3">
+        Execution archetype: rule-based, evaluated left to right; the first rule met applies
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-center">
+        <!-- 1. Gamechanger -->
+        <div class="p-4 rounded-xl bg-white border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+          <div>
+            <h5 class="font-display text-sm font-bold text-on-surface">Gamechanger</h5>
+            <p class="font-mono text-[11px] text-on-surface-variant mt-1">Auto/ROI/Feas ≥ 4, GTM M/H</p>
+          </div>
+          <div class="font-body text-xs text-google-blue font-semibold mt-3 pt-2 border-t border-outline-variant/30">
+            Flagship investment
+          </div>
+        </div>
+        <!-- 2. Quick Win -->
+        <div class="p-4 rounded-xl bg-white border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+          <div>
+            <h5 class="font-display text-sm font-bold text-on-surface">Quick Win</h5>
+            <p class="font-mono text-[11px] text-on-surface-variant mt-1">ROI ≥ 4, Feas ≥ 4</p>
+          </div>
+          <div class="font-body text-xs text-google-green font-semibold mt-3 pt-2 border-t border-outline-variant/30">
+            Fast-track execution
+          </div>
+        </div>
+        <!-- 3. Scalable Enabler -->
+        <div class="p-4 rounded-xl bg-white border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+          <div>
+            <h5 class="font-display text-sm font-bold text-on-surface">Scalable Enabler</h5>
+            <p class="font-mono text-[11px] text-on-surface-variant mt-1">Cross-app ≥ 4, Feas ≥ 4</p>
+          </div>
+          <div class="font-body text-xs text-secondary font-semibold mt-3 pt-2 border-t border-outline-variant/30">
+            Reusable horizontal platform
+          </div>
+        </div>
+        <!-- 4. Future Horizon -->
+        <div class="p-4 rounded-xl bg-white border border-outline-variant/40 shadow-sm flex flex-col justify-between">
+          <div>
+            <h5 class="font-display text-sm font-bold text-on-surface">Future Horizon</h5>
+            <p class="font-mono text-[11px] text-on-surface-variant mt-1">Auto/ROI ≥ 4, Feas &lt; 4</p>
+          </div>
+          <div class="font-body text-xs text-tertiary font-semibold mt-3 pt-2 border-t border-outline-variant/30">
+            Invest in unblocking
+          </div>
+        </div>
+        <!-- 5. Standard / Backlog -->
+        <div class="p-4 rounded-xl bg-white border border-outline-variant/40 shadow-sm flex flex-col justify-between col-span-1 sm:col-span-2 lg:col-span-1">
+          <div>
+            <h5 class="font-display text-sm font-bold text-on-surface">Standard / Backlog</h5>
+            <p class="font-mono text-[11px] text-on-surface-variant mt-1">All other solutions</p>
+          </div>
+          <div class="font-body text-xs text-outline font-semibold mt-3 pt-2 border-t border-outline-variant/30">
+            Review quarterly
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer Actions -->
+    <div class="pt-2 flex justify-between items-center border-t border-outline-variant/30">
+      <span class="font-mono text-[11px] text-on-surface-variant">
+        Google Cloud × Cognizant Enterprise Governance Matrix
+      </span>
+      <button class="px-4 py-2 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-mono text-xs border border-outline-variant/40 transition-colors" onclick="closePrioritizationModal()">
+        Close Matrix
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openPrioritizationModal() {
+    openModal('modal-prioritization-framework');
+  }
+  function closePrioritizationModal() {
+    closeModal('modal-prioritization-framework');
+  }
+</script></body></html>
